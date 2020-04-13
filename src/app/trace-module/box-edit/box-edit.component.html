@@ -1,0 +1,47 @@
+<div class="box-edit-container">
+    <div class="box-nav-container">
+        <h4>Преместване на кутия</h4>
+        <div class="position-nav">
+            <button (click)="moveTop()">to top</button>
+            <div>
+                <button (click)="moveLeft()">to left</button><button (click)=" moveRight()">to right</button>
+            </div>
+            <button (click)="moveBottom()">to bottom</button>
+        </div>
+        <div class="position-nav">
+            <p>Стъпка на придвижване: {{stepToMoveBox}}</p>
+            <div>
+                <button (click)="stepDown()">step--</button> <button (click)="stepUp()">step++</button>
+            </div>
+            <!-- <button (click)="boxEdited()">ok</button> -->
+        </div>
+    </div>
+    <div class="form-wrapper">
+        <form form #f="ngForm" (ngSubmit)="onEdit(f)" class="form">
+            <div>
+                <p><label for="name">име</label></p>
+                <p><input type="text" [(ngModel)]="box.name" name="name" id="name"></p>
+            </div>
+            <div>
+                <p> <label for="free-fibers">свободни влакна</label></p>
+                <p><input type="number" [(ngModel)]="box.freeFibers" name="freeFibers" id="free-fibers"></p>
+            </div>
+            <div>
+                <p> <label for="splitter">сплитер</label></p>
+                <p><input type="number" [(ngModel)]="box.splitter" name="splitter" id="splitter"></p>
+            </div>
+            <div class=users>
+                <h5>Абонати</h5>
+                <ol *ngIf="box.users">
+                    <li *ngFor="let user of box.users">
+                        <p><input type="text" [value]="user.id"> <button>ok</button> <button>delete</button></p>
+                    </li>
+                </ol>
+            </div>
+            <div class="button-submit">
+                <button type="submit">Edit</button>
+                <button (click)="boxEdited()">exit</button>
+            </div>
+        </form>
+    </div>
+</div>

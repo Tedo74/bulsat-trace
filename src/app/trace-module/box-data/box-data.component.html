@@ -1,0 +1,20 @@
+<ng-container *ngIf="box">
+    <div class="box-data">
+        <h4 class="box-data-heading">{{box.name}}</h4>
+        <p>Свободни влакна: {{box.freeFibers}}</p>
+        <p>Сплитер: {{box.splitter}}</p>
+        <ul *ngIf="box.users">
+            <li *ngFor="let user of box.users">абонат с пон: {{user.id}}</li>
+        </ul>
+    </div>
+    <div class="box-nav">
+        <div class="add-user">
+            <label>пон:</label>
+            <input type="text">
+            <button>добави абонат</button>
+        </div>
+        <div class="nav-box-buttons">
+            <button (click)="editBox()">редактирай кутия</button>
+        </div>
+    </div>
+</ng-container>

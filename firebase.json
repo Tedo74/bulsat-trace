@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "bulsat-net",
+      "public": "dist/bulsat-net",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

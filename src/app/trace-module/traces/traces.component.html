@@ -1,0 +1,10 @@
+<div class="traces-container">
+    <div class="traces-nav">
+        <ul *ngIf="traces">
+            <li *ngFor="let trace of traces">
+                <a (click)="openTrace(trace.id)">{{trace.name}}</a>
+                <!-- <a [routerLink]="['/trace',trace.id]">{{trace.name}}</!-->
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bulsat-trace": {
+      "hosting": {
+        "bulsat-net": [
+          "bulsat-trace"
+        ]
+      }
+    }
+  }
+}

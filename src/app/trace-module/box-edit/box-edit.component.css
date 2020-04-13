@@ -1,0 +1,40 @@
+.box-edit-container {
+	padding: 0.5em;
+	padding-top: 0;
+}
+.box-nav-container {
+	background-color: indianred;
+	padding: 1em;
+}
+
+.position-nav {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 0.2em;
+}
+h4,
+h5 {
+	margin: 0.5em;
+	text-align: center;
+}
+.form-wrapper {
+	background-color: darksalmon;
+	padding: 0.5em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form div {
+	margin-bottom: 1em;
+}
+p {
+	padding: 0.1em;
+	margin: 0.1em;
+}
+.button-submit button {
+	display: block;
+	margin: 0 auto;
+}

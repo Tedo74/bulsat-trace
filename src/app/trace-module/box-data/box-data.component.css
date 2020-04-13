@@ -1,0 +1,35 @@
+.box-data {
+	display: flex;
+	flex-direction: column;
+}
+.box-data-heading {
+	text-align: center;
+	background-color: darkgray;
+	padding: 1em;
+}
+
+.box-nav {
+	display: flex;
+	flex-direction: column;
+	background-color: darkgray;
+	padding: 1em;
+}
+
+.box-nav button {
+	margin: 0.5em;
+}
+
+.add-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.add-user label {
+	padding: 0;
+	margin-right: 0.5em;
+}
+.nav-box-buttons {
+	display: flex;
+	justify-content: center;
+}

@@ -1,0 +1,11 @@
+.traces-container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+	align-items: flex-start;
+}
+
+.traces-nav {
+	background-color: indianred;
+	padding: 1em;
+}

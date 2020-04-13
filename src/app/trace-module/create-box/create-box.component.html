@@ -1,0 +1,19 @@
+<div class="form-wrapper">
+    <form form #f="ngForm" (ngSubmit)="onCreate(f)" class="form">
+        <div>
+            <p><label for="name">име</label></p>
+            <p><input type="text" ngModel name="name" id="name"></p>
+        </div>
+        <div>
+            <p> <label for="free-fibers">свободни влакна</label></p>
+            <p><input type="number" ngModel name="freeFibers" id="free-fibers"></p>
+        </div>
+        <div>
+            <p> <label for="splitter">сплитер</label></p>
+            <p><input type="number" ngModel name="splitter" id="splitter"></p>
+        </div>
+        <div class="button-submit">
+            <button type="submit">Create</button>
+        </div>
+    </form>
+</div>

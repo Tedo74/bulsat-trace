@@ -30,6 +30,7 @@ export class TracesComponent implements OnInit, OnDestroy {
 	getDataToOpenTrace() {
 		this.collectionSubs = this.route.params.subscribe((p) => {
 			this.path = `nodes/${p.id}/traces`;
+			this.traceServ.tracesInNodePath = this.path;
 			this.traceServ.getCollection(this.path).subscribe((d) => {
 				this.traces = d;
 			});
@@ -37,14 +38,14 @@ export class TracesComponent implements OnInit, OnDestroy {
 		// this.traceServ.changePath(this.path);
 	}
 
-	openTrace(id: string) {
-		this.traceServ.changeShowTrace(true);
-		this.nextPath = `${this.path}/${id}`;
-		this.traceServ.changePath(this.nextPath);
-		this.traceServ.traceId = id;
-		this.traceServ.loadTrace();
+	// openTrace(id: string) {
+	// 	// this.traceServ.changeShowTrace(true);
+	// 	this.nextPath = `${this.path}/${id}`;
+	// 	this.traceServ.changePath(this.nextPath);
+	// 	this.traceServ.traceId = id;
+	// 	this.traceServ.loadTrace();
 
-		// console.log(this.nextPath);
-		// this.router.navigate([ '/trace', id ]);
-	}
+	// 	// console.log(this.nextPath);
+	// 	// this.router.navigate([ '/trace', id ]);
+	// }
 }

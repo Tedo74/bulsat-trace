@@ -24,9 +24,9 @@ export class AllNodesComponent implements OnInit, OnDestroy {
 	ngOnDestroy() {
 		this.getCollectionSubs.unsubscribe();
 	}
-	goToNode(id: string) {
-		// this.router.navigate([ '/traces', id ]);
-		this.router.navigate([ '/node', id ]);
-		this.db.changeShowTrace(false);
-	}
+	// goToNode(id: string) {
+	// 	// this.router.navigate([ '/traces', id ]);
+	// 	this.router.navigate([ '/node', id ]);
+	// 	this.db.changeShowTrace(false);
+	// }
 }

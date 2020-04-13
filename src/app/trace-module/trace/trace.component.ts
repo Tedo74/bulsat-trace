@@ -4,6 +4,7 @@ import { BoxModel } from '../box-model';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BoxServService } from '../box-serv.service';
+import { TraceModel } from '../trace-model';
 
 @Component({
 	selector: 'app-trace',
@@ -11,9 +12,14 @@ import { BoxServService } from '../box-serv.service';
 	styleUrls: [ './trace.component.css' ]
 })
 export class TraceComponent implements OnInit, OnDestroy {
+	id: string;
+	traceData: TraceModel;
+	// idChanged: Subscription;
+	imageUrl: string;
+	// traceInfoSubs: Subscription;
 	traceChanged: Subscription;
 	trace = <BoxModel[]>[];
-	@Input() traceImageUrl: string;
+	traceImageUrl: string;
 	nextBoxes = <BoxModel[]>[];
 	firstBoxId: string;
 	parentBoxId: string;
@@ -28,6 +34,14 @@ export class TraceComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
+		this.route.params.subscribe((p) => {
+			this.id = p.id;
+			this.traceServ.tracePath = `${this.traceServ.tracesInNodePath}/${this.id}`;
+			this.traceServ.getTrace(`${this.traceServ.tracePath}/boxes`);
+			this.boxServ.pathToCollection = `${this.traceServ.tracePath}/boxes`;
+			console.log(`${this.traceServ.tracePath}/boxes`);
+		});
+
 		this.traceChanged = this.traceServ.traceChanged.subscribe((d) => {
 			this.trace = d;
 			if (this.trace) {
@@ -36,12 +50,32 @@ export class TraceComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	// getTraceData() {
+	// 	this.traceInfoSubs = this.traceServ
+	// 		.getTraceInfo(this.traceServ.tracePath)
+	// 		.subscribe((d) => {
+	// 			this.traceData = d;
+	// 			if (d.imageUrl) {
+	// 				this.imageUrl = 'https://drive.google.com/uc?id=' + d.imageUrl;
+	// 			} else {
+	// 				this.imageUrl = undefined;
+	// 			}
+	// 		});
+	// }
+
 	ngOnDestroy() {
 		this.traceChanged.unsubscribe();
+		// this.idChanged.unsubscribe();
+		// this.traceInfoSubs.unsubscribe();
 	}
 
 	currentTraceInfo() {
-		this.traceServ.getTraceInfo(this.traceServ.path).subscribe((d) => {
+		this.traceServ.getTraceInfo(`${this.traceServ.tracePath}`).subscribe((d) => {
+			if (d.imageUrl) {
+				this.imageUrl = 'https://drive.google.com/uc?id=' + d.imageUrl;
+			} else {
+				this.imageUrl = undefined;
+			}
 			this.firstBoxId = d.firstBoxId;
 			if (this.selectedBoxId) {
 				let faundBox1 = this.findBox(this.selectedBoxId);

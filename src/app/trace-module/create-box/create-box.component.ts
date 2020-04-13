@@ -28,9 +28,9 @@ export class CreateBoxComponent implements OnInit, OnDestroy {
 			this.parentBox = b;
 		});
 
-		this.pathToCollection = this.traceServ.path + '/boxes';
-		this.path = this.traceServ.nextPathChange.subscribe((p) => {
-			this.pathToCollection = p + '/boxes';
+		this.pathToCollection = this.boxServ.pathToCollection;
+		this.path = this.boxServ.pathToCollectionChanged.subscribe((p) => {
+			this.pathToCollection = p;
 		});
 	}
 	ngOnDestroy() {

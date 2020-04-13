@@ -58,7 +58,7 @@ h3 {
 	padding: 1em;
 	margin: 1em;
 	border: 2px solid grey;
-	max-width: 500px;
+	max-width: 300px;
 }
 
 /* .box:not(:last-of-type)::after {

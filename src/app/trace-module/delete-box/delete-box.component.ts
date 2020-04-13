@@ -12,11 +12,11 @@ import { Subscription } from 'rxjs';
 })
 export class DeleteBoxComponent implements OnInit, OnDestroy {
 	// boxChanged: Subscription;
-	// parentBoxChanged: Subscription;
+	idChanged: Subscription;
 	pathToCollection: string;
 	path: Subscription;
-	@Input() id: string;
-	// id: string;
+	// @Input() id: string;
+	id: string;
 	box: BoxModel;
 	parentBox: BoxModel;
 	nextBoxes: BoxModel[];
@@ -33,9 +33,9 @@ export class DeleteBoxComponent implements OnInit, OnDestroy {
 			this.pathToCollection = p + '/boxes';
 			this.boxServ.pathToCollection = p + '/boxes';
 		});
-		// this.route.params.subscribe((d) => {
-		// 	this.id = d.id;
-		// });
+		this.route.params.subscribe((d) => {
+			this.id = d.id;
+		});
 		// this.boxChanged = this.boxServ.boxChanged.subscribe((b) => {
 		// 	this.box = b;
 		// });
@@ -49,7 +49,7 @@ export class DeleteBoxComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.path.unsubscribe();
-		// this.boxChanged.unsubscribe();
+		// this.idChanged.unsubscribe();
 		// this.parentBoxChanged.unsubscribe();
 		// this.boxesChanged.unsubscribe();
 	}
@@ -57,8 +57,8 @@ export class DeleteBoxComponent implements OnInit, OnDestroy {
 	delete() {
 		console.log(this.pathToCollection);
 		console.log(this.id);
-		this.boxServ.delete(this.id, this.pathToCollection);
 		return;
+		this.boxServ.delete(this.id, this.pathToCollection);
 		if (this.parentBox) {
 			this.nextBoxes.forEach((nextBox) => {
 				nextBox.parentBox = this.parentBox.id;
@@ -79,7 +79,7 @@ export class DeleteBoxComponent implements OnInit, OnDestroy {
 		}
 
 		// this.boxServ.delete(id);
-		this.traceServ.changeShowTrace(true);
+		// this.traceServ.changeShowTrace(true);
 		// this.router.navigate([ '/node', this.traceServ.openedNodeId ]);
 		// this.boxServ.box = null;
 	}

@@ -1,6 +1,6 @@
 <div class="trace-container">
-    <div class="trace-image" *ngIf="traceImageUrl">
-        <img [src]="traceImageUrl">
+    <div class="trace-image" *ngIf="imageUrl">
+        <img [src]="imageUrl">
         <div *ngIf="trace">
             <app-box *ngFor="let box of trace" class="small-box"
                 [ngClass]="{'selected':box.id==selectedBoxId,'next':findNextBoxes(box.id),'parent':findParent(box.id, parentBoxId)}"
@@ -21,9 +21,10 @@
             <div *ngIf="trace" class="box-details">
                 <app-box-data *ngIf="box" [box]="box"></app-box-data>
                 <div class="create-delete" *ngIf="box">
-                    <!-- <button routerLink="/delete" >delete</button> -->
+                    <!-- <button [routerLink]="['delete',box.id]">deletee</button> -->
                     <app-delete-box [id]="box.id"></app-delete-box>
-                    <button routerLink="/create">create</button>
+                    <button routerLink="create">create</button>
+                    <button routerLink="edit">edit</button>
                 </div>
             </div>
             <h3>Следващи кутии...</h3>
@@ -32,5 +33,8 @@
                 </app-box>
             </div>
         </div>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
     </div>
 </div>

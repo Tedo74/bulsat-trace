@@ -16,7 +16,7 @@
             <!-- <button (click)="boxEdited()">ok</button> -->
         </div>
     </div>
-    <div class="form-wrapper">
+    <div class="form-wrapper" *ngIf="box">
         <form form #f="ngForm" (ngSubmit)="onEdit(f)" class="form">
             <div>
                 <p><label for="name">име</label></p>

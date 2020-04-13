@@ -2,8 +2,8 @@
     <div class="traces-nav">
         <ul *ngIf="traces">
             <li *ngFor="let trace of traces">
-                <a (click)="openTrace(trace.id)">{{trace.name}}</a>
-                <!-- <a [routerLink]="['/trace',trace.id]">{{trace.name}}</!-->
+                <!-- <a (click)="openTrace(trace.id)">{{trace.name}}</a> -->
+                <a [routerLink]="['trace',trace.id]">{{trace.name}}</a>
             </li>
         </ul>
     </div>

@@ -12,6 +12,12 @@ import { stringify } from 'querystring';
 })
 export class BoxServService {
 	pathToCollection: string;
+	pathToCollectionChanged = new Subject<string>();
+	changePath(path: string) {
+		this.pathToCollection = path;
+		this.pathToCollectionChanged.next(this.pathToCollection);
+	}
+
 	box: BoxModel;
 	parentBox: BoxModel;
 	nextBoxes: BoxModel[];

@@ -12,17 +12,20 @@ import { TraceModel } from './trace-model';
 })
 export class TracesServService {
 	openedNodeId: string;
+	nodePath: string;
+	tracesInNodePath: string;
+	tracePath: string;
 	path: string;
 	trace = <BoxModel[]>[];
 	// firstBoxId: string;
 	// selectedBoxId: string;
-	showTraceInNode = false;
-	showTraceInNodeChange = new Subject<boolean>();
+	// showTraceInNode = false;
+	// showTraceInNodeChange = new Subject<boolean>();
 	traceChanged = new Subject<BoxModel[]>();
-	changeShowTrace(show: boolean) {
-		this.showTraceInNode = show;
-		this.showTraceInNodeChange.next(this.showTraceInNode);
-	}
+	// changeShowTrace(show: boolean) {
+	// 	this.showTraceInNode = show;
+	// 	this.showTraceInNodeChange.next(this.showTraceInNode);
+	// }
 	traceId: string;
 	nextPathChange = new Subject<string>();
 	changePath(newPath: string) {
@@ -57,6 +60,7 @@ export class TracesServService {
 			)
 			.subscribe((d: BoxModel[]) => {
 				this.trace = d;
+				this.traceChanged.next(this.trace);
 			});
 	}
 

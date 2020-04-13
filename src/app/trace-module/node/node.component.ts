@@ -14,8 +14,8 @@ export class NodeComponent implements OnInit, OnDestroy {
 	node: NodeModel;
 	pathNode: string;
 
-	showTrace = false;
-	showTraceSubscription: Subscription;
+	// showTrace = false;
+	// showTraceSubscription: Subscription;
 
 	constructor(private traceServ: TracesServService, private route: ActivatedRoute) {}
 
@@ -23,6 +23,7 @@ export class NodeComponent implements OnInit, OnDestroy {
 		this.paramsSubs = this.route.params.subscribe((p) => {
 			// let id = this.route.snapshot.params['id'];
 			this.pathNode = `nodes/${p.id}`;
+			this.traceServ.nodePath = this.pathNode;
 			this.traceServ.openedNodeId = p.id;
 			this.traceServ.getNodeInfo(this.pathNode).subscribe((d) => {
 				this.node = d;
@@ -35,15 +36,15 @@ export class NodeComponent implements OnInit, OnDestroy {
 			});
 		});
 
-		this.showTraceSubscription = this.traceServ.showTraceInNodeChange.subscribe(
-			(show) => {
-				this.showTrace = show;
-			}
-		);
+		// this.showTraceSubscription = this.traceServ.showTraceInNodeChange.subscribe(
+		// 	(show) => {
+		// 		this.showTrace = show;
+		// 	}
+		// );
 	}
 
 	ngOnDestroy(): void {
 		this.paramsSubs.unsubscribe();
-		this.showTraceSubscription.unsubscribe();
+		// this.showTraceSubscription.unsubscribe();
 	}
 }

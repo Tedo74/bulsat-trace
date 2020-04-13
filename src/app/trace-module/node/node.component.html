@@ -1,5 +1,5 @@
 <h4 *ngIf="node">{{node.name}}</h4>
 <app-traces></app-traces>
-<div class="trace-container" *ngIf="showTrace">
-    <app-trace [traceImageUrl]="node.imageUrl"></app-trace>
+<div class="trace-container">
+    <router-outlet></router-outlet>
 </div>

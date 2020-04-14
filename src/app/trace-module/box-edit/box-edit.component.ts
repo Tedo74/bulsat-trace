@@ -3,11 +3,12 @@ import { BoxModel } from '../box-model';
 import { BoxServService } from '../box-serv.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-box-edit',
 	templateUrl: './box-edit.component.html',
-	styleUrls: [ './box-edit.component.css' ]
+	styleUrls: ['./box-edit.component.css']
 })
 export class BoxEditComponent implements OnInit, OnDestroy {
 	// @Input() box: BoxModel;
@@ -15,8 +16,8 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 	box: BoxModel;
 	stepToMoveBox = 20;
 	// @Input() trace = <BoxModel[]>[];
-	@Output() boxEditedEvent = new EventEmitter();
-	constructor(private boxServ: BoxServService) {}
+	// @Output() boxEditedEvent = new EventEmitter();
+	constructor(private boxServ: BoxServService, private route: ActivatedRoute, private router: Router) { }
 
 	ngOnInit(): void {
 		this.box = this.boxServ.box;
@@ -59,10 +60,8 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 		this.boxServ.moveTop();
 	}
 
-	boxEdited() {
-		this.boxEditedEvent.emit();
-		// this.boxServ.box = this.box;
-		this.boxServ.boxEdit = false;
+	close() {
+		this.router.navigate(['../'], { relativeTo: this.route });
 	}
 
 	stepDown() {

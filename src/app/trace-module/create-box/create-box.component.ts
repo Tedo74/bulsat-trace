@@ -2,14 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BoxModel } from '../box-model';
 import { BoxServService } from '../box-serv.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TracesServService } from '../traces-serv.service';
 import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-create-box',
 	templateUrl: './create-box.component.html',
-	styleUrls: [ './create-box.component.css' ]
+	styleUrls: ['./create-box.component.css']
 })
 export class CreateBoxComponent implements OnInit, OnDestroy {
 	getBoxSubscription: Subscription;
@@ -19,8 +19,9 @@ export class CreateBoxComponent implements OnInit, OnDestroy {
 	constructor(
 		private boxServ: BoxServService,
 		private router: Router,
+		private route: ActivatedRoute,
 		private traceServ: TracesServService
-	) {}
+	) { }
 
 	ngOnInit(): void {
 		this.parentBox = this.boxServ.box;
@@ -48,5 +49,9 @@ export class CreateBoxComponent implements OnInit, OnDestroy {
 			nextBoxes: []
 		};
 		this.boxServ.create(boxToUpload, this.pathToCollection);
+	}
+
+	onClose() {
+		this.router.navigate(['../'], { relativeTo: this.route });
 	}
 }

@@ -18,7 +18,7 @@ const routes: Routes = [
 				path: 'trace/:id',
 				component: TraceComponent,
 				children: [
-					{ path: 'delete', component: DeleteBoxComponent },
+					{ path: 'delete/:id', component: DeleteBoxComponent },
 					{ path: 'create', component: CreateBoxComponent },
 					{ path: 'edit', component: BoxEditComponent }
 				]
@@ -29,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [ RouterModule.forRoot(routes) ],
-	exports: [ RouterModule ]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

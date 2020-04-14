@@ -21,8 +21,8 @@
             <div *ngIf="trace" class="box-details">
                 <app-box-data *ngIf="box" [box]="box"></app-box-data>
                 <div class="create-delete" *ngIf="box">
-                    <!-- <button [routerLink]="['delete',box.id]">deletee</button> -->
-                    <app-delete-box [id]="box.id"></app-delete-box>
+                    <button [routerLink]="['delete',box.id]">deletee</button>
+                    <!-- <app-delete-box [id]="box.id"></app-delete-box> -->
                     <button routerLink="create">create</button>
                     <button routerLink="edit">edit</button>
                 </div>

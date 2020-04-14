@@ -32,7 +32,7 @@ export class BoxServService {
 	constructor(
 		private db: AngularFirestore,
 		private router: Router // private tracesServ: TracesServService
-	) {}
+	) { }
 
 	editPartial(id: string, changes: Partial<BoxModel>, path: string) {
 		this.db.doc(`${path}/${id}`).update(changes);
@@ -43,13 +43,32 @@ export class BoxServService {
 	editAllObj(id: string, box: BoxModel) {
 		this.db.doc(`${this.pathToCollection}/${id}`).set(box);
 	}
-	delete(id: string, path: string) {
-		console.log(path);
-		console.log(id);
+	deleteBox() {
+		//what if box is not deleted!
+		// do this after successfully deleted box!
+		if (this.parentBox) {
+			this.nextBoxes.forEach((nextBox) => {
+				nextBox.parentBox = this.parentBox.id;
+				this.edit(nextBox.id, { parentBox: this.parentBox.id });
+			});
+			this.parentBox.nextBoxes = this.parentBox.nextBoxes.filter((b) => {
+				return b !== this.box.id;
+			});
+			if (this.box.nextBoxes.length > 0) {
+				let nb = [];
+				this.box.nextBoxes.forEach((b) => {
+					nb.push(b);
+				});
+				this.edit(this.parentBox.id, { nextBoxes: nb });
+			}
+		}
+		this.delete(this.box.id);
+	}
+
+	delete(id: string) {
 
 		this.db
-			// .collection(this.pathToCollection)
-			.collection(path)
+			.collection(this.pathToCollection)
 			.doc(id)
 			.delete()
 			.then((d) => {
@@ -58,6 +77,7 @@ export class BoxServService {
 			})
 			.catch((err) => console.log(err));
 	}
+
 	create(box: BoxModel, path: string) {
 		console.log(path);
 		console.log(box);

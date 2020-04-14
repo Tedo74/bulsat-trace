@@ -9,7 +9,7 @@ import { TraceModel } from '../trace-model';
 @Component({
 	selector: 'app-trace',
 	templateUrl: './trace.component.html',
-	styleUrls: [ './trace.component.css' ]
+	styleUrls: ['./trace.component.css']
 })
 export class TraceComponent implements OnInit, OnDestroy {
 	id: string;
@@ -25,13 +25,14 @@ export class TraceComponent implements OnInit, OnDestroy {
 	parentBoxId: string;
 	parentBox: BoxModel;
 	box: BoxModel;
+	// boxChanged: Subscription;
 	selectedBoxId: string;
 
 	constructor(
 		private traceServ: TracesServService,
 		private route: ActivatedRoute,
 		private boxServ: BoxServService
-	) {}
+	) { }
 
 	ngOnInit(): void {
 		this.route.params.subscribe((p) => {
@@ -48,23 +49,15 @@ export class TraceComponent implements OnInit, OnDestroy {
 				this.currentTraceInfo();
 			}
 		});
-	}
 
-	// getTraceData() {
-	// 	this.traceInfoSubs = this.traceServ
-	// 		.getTraceInfo(this.traceServ.tracePath)
-	// 		.subscribe((d) => {
-	// 			this.traceData = d;
-	// 			if (d.imageUrl) {
-	// 				this.imageUrl = 'https://drive.google.com/uc?id=' + d.imageUrl;
-	// 			} else {
-	// 				this.imageUrl = undefined;
-	// 			}
-	// 		});
-	// }
+		// this.boxChanged = this.boxServ.boxChanged.subscribe(b => {
+		// 	this.box = b;
+		// })
+	}
 
 	ngOnDestroy() {
 		this.traceChanged.unsubscribe();
+		// this.boxChanged.unsubscribe();
 		// this.idChanged.unsubscribe();
 		// this.traceInfoSubs.unsubscribe();
 	}
@@ -104,6 +97,7 @@ export class TraceComponent implements OnInit, OnDestroy {
 			this.parentBoxId = this.parentBox.id;
 		} else {
 			this.parentBox = undefined;
+			this.parentBoxId = undefined;
 		}
 
 		this.nextBoxes = this.getNextBoxes(this.box);
@@ -150,8 +144,4 @@ export class TraceComponent implements OnInit, OnDestroy {
 	findBox(id: string): BoxModel {
 		return this.trace.find((element) => element.id === id);
 	}
-
-	// boxEdited(evt: boolean) {
-	// 	this.boxEdit = false;
-	// }
 }

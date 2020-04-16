@@ -3,7 +3,7 @@
         <ul *ngIf="traces">
             <li *ngFor="let trace of traces">
                 <!-- <a (click)="openTrace(trace.id)">{{trace.name}}</a> -->
-                <a [routerLink]="['trace',trace.id]">{{trace.name}}</a>
+                <a [routerLink]="['trace',trace.id]" routerLinkActive="active">{{trace.name}}</a>
             </li>
         </ul>
     </div>

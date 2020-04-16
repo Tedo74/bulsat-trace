@@ -4,15 +4,16 @@
 }
 .box-data-heading {
 	text-align: center;
-	background-color: darkgray;
+	background-color: #9f857f;
 	padding: 1em;
 }
 
 .box-nav {
 	display: flex;
 	flex-direction: column;
-	background-color: darkgray;
+	background-color: #9f857f;
 	padding: 1em;
+	align-items: center;
 }
 
 .box-nav button {
@@ -21,11 +22,7 @@
 
 .add-user {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.add-user label {
-	padding: 0;
-	margin-right: 0.5em;
+	flex-direction: column;
+	/* justify-content: flex-start; */
+	align-items: flex-start;
 }

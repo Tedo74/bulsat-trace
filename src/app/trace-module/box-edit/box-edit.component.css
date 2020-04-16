@@ -1,9 +1,11 @@
 .box-edit-container {
+	display: flex;
+	flex-direction: column;
 	padding: 0.5em;
 	padding-top: 0;
 }
 .box-nav-container {
-	background-color: indianred;
+	background-color: #59342c;
 	padding: 1em;
 }
 
@@ -13,6 +15,22 @@
 	align-items: center;
 	text-align: center;
 	padding: 0.2em;
+}
+
+.position-nav button {
+	margin: 0.1em;
+}
+
+.step {
+	display: flex;
+}
+.step button {
+	margin: 0.3em;
+}
+
+.left-right {
+	display: flex;
+	justify-content: center;
 }
 h4,
 h5 {
@@ -34,7 +52,11 @@ p {
 	padding: 0.1em;
 	margin: 0.1em;
 }
+.button-submit {
+	display: flex;
+	justify-content: center;
+}
+
 .button-submit button {
-	display: block;
-	margin: 0 auto;
+	margin: 0.3em;
 }

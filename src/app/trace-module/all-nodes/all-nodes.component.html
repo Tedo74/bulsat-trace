@@ -1,8 +1,8 @@
-<div *ngIf="allNodes">
+<div *ngIf="allNodes" class="all-nodes">
     <ul>
         <li *ngFor="let node of allNodes">
             <!-- <a (click)="goToNode(node.id)">{{node.name}}</a> -->
-            <a [routerLink]="['node',node.id]">{{node.name}}</a>
+            <a [routerLink]="['node',node.id]" routerLinkActive="active">{{node.name}}</a>
         </li>
     </ul>
 </div>

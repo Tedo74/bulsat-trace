@@ -11,7 +11,7 @@
     <!-- <app-box-edit *ngIf="box && boxEdit" (boxEditedEvent)="boxEdited($event)"></app-box-edit> -->
     <div>
         <div class="trace-nav">
-            <h3>Предна кутия</h3>
+            <h5>Предна кутия</h5>
             <div class="parent-container">
                 <ng-container *ngIf="parentBox">
                     <app-box class="parent-box parent" (click)="getBox(box.parentBox)" [box]="parentBox">
@@ -21,13 +21,13 @@
             <div *ngIf="trace" class="box-details">
                 <app-box-data *ngIf="box" [box]="box"></app-box-data>
                 <div class="create-delete" *ngIf="box">
-                    <button [routerLink]="['delete',box.id]">deletee</button>
+                    <button [routerLink]="['delete',box.id]">delete</button>
                     <!-- <app-delete-box [id]="box.id"></app-delete-box> -->
                     <button routerLink="create">create</button>
                     <button routerLink="edit">edit</button>
                 </div>
             </div>
-            <h3>Следващи кутии...</h3>
+            <h5>Следващи кутии...</h5>
             <div *ngIf="nextBoxes" class="next-boxes">
                 <app-box *ngFor="let box of nextBoxes" class="box next" (click)="getBox(box.id)" [box]="box">
                 </app-box>

@@ -12,11 +12,10 @@
             <p> <label for="splitter">сплитер</label></p>
             <p><input type="number" ngModel name="splitter" id="splitter"></p>
         </div>
-        <div class="button-submit">
+        <div class="buttons">
             <button type="submit">Create</button>
+            <button (click)="onClose()">exit</button>
         </div>
     </form>
-    <div>
-        <button (click)="onClose()">exit</button>
-    </div>
+
 </div>

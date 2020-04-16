@@ -1,4 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Manrope:400,800&display=swap&subset=cyrillic');
 /* You can add global styles to this file, and also import other style files */
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+}
+
+/* Box sizing */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	font: 16px/1.5 'Manrope', sans-serif;
+}
+
+body,
+table,
+form,
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+h1 {
+	font-size: 2.4em;
+}
+
+h2 {
+	font-size: 2.2em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.8em;
+}
+
+h5 {
+	font-size: 1.6em;
+}
+
+h6 {
+	font-size: 1.3em;
+}
+
 a {
+	color: white;
+	display: block;
+	text-decoration: none;
 	cursor: pointer;
+}
+
+a:hover {
+	font-weight: 800;
+}
+
+ul {
+	list-style-type: none;
+}
+
+button {
+	box-sizing: border-box;
+	display: block;
+	cursor: pointer;
+	padding: 0.8em;
+	background-color: rgb(26, 3, 3);
+	color: white;
+	border: 2px solid white;
+	border-radius: 0.2em;
+	font-weight: 800;
+}
+
+button:hover {
+	background-color: white;
+	color: rgb(26, 3, 3);
+	border: 2px solid white;
+	border-radius: 0.2em;
 }

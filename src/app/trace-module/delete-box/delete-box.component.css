@@ -1,18 +1,21 @@
 .delete-box {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1em;
-    background-color: rosybrown;
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1em;
+	background-color: rosybrown;
 }
 
-.delete-box button {
-    border: none;
-    margin: 0.3em;
+button {
+	margin: 0.3em;
 }
 
 button.danger {
-    background-color: red;
-    color: white;
+	background-color: red;
+	color: white;
+}
+
+.buttons {
+	display: flex;
 }

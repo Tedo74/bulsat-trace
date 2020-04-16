@@ -1,4 +1,19 @@
 .form-wrapper {
-    background-color: rosybrown;
-    padding: 1em;
+	display: flex;
+	flex-direction: column;
+	background-color: #9f857f;
+	padding: 1em;
+}
+
+.form-wrapper div {
+	margin-bottom: 0.3em;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+}
+
+.buttons button {
+	margin: 0.3em;
 }

@@ -1,1 +1,9 @@
+.all-nodes {
+	max-width: 400px;
+	background-color: brown;
+	padding: 1em;
+}
 
+.active {
+	font-weight: 800;
+}

@@ -6,6 +6,10 @@
 }
 
 .traces-nav {
-	background-color: indianred;
+	background-color: brown;
 	padding: 1em;
+}
+
+.active {
+	font-weight: 800;
 }

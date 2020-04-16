@@ -2,15 +2,15 @@
     <div class="box-nav-container">
         <h4>Преместване на кутия</h4>
         <div class="position-nav">
-            <button (click)="moveTop()">to top</button>
-            <div>
-                <button (click)="moveLeft()">to left</button><button (click)=" moveRight()">to right</button>
+            <button (click)="moveTop()">&#9650;</button>
+            <div class="left-right">
+                <button (click)="moveLeft()">&#9668;</button><button (click)=" moveRight()">&#9658;</button>
             </div>
-            <button (click)="moveBottom()">to bottom</button>
+            <button (click)="moveBottom()">&#9660;</button>
         </div>
         <div class="position-nav">
             <p>Стъпка на придвижване: {{stepToMoveBox}}</p>
-            <div>
+            <div class="step">
                 <button (click)="stepDown()">step--</button> <button (click)="stepUp()">step++</button>
             </div>
             <!-- <button (click)="boxEdited()">ok</button> -->

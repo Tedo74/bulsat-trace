@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { BoxEditComponent } from './box-edit/box-edit.component';
 import { DeleteBoxComponent } from './delete-box/delete-box.component';
 import { CreateBoxComponent } from './create-box/create-box.component';
+import { CreateTraceComponent } from './create-trace/create-trace.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { CreateBoxComponent } from './create-box/create-box.component';
 		AllNodesComponent,
 		BoxEditComponent,
 		DeleteBoxComponent,
-		CreateBoxComponent
+		CreateBoxComponent,
+		CreateTraceComponent
 	],
 	imports: [ CommonModule, RouterModule, FormsModule ],
 	exports: [ RouterModule, AllNodesComponent ]

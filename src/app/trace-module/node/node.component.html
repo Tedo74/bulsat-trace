@@ -1,5 +1,12 @@
-<h4 *ngIf="node">{{node.name}}</h4>
-<app-traces></app-traces>
+<div class="content-wrapper">
+    <div class="content">
+        <h4 *ngIf="node">{{node.name}}</h4>
+        <div class="traces-menu">
+            <app-traces></app-traces>
+            <button>add new trace</button>
+        </div>
+    </div>
+</div>
 <div class="trace-container">
     <router-outlet></router-outlet>
 </div>

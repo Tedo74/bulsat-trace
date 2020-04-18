@@ -1,13 +1,14 @@
 .traces-container {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 1em;
 	align-items: flex-start;
 }
 
 .traces-nav {
+	width: 22em;
 	background-color: brown;
 	padding: 1em;
+	margin-bottom: 0.2em;
 }
 
 .active {

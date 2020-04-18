@@ -87,10 +87,12 @@ h5 {
 	display: block;
 	width: 800px;
 	height: 500px;
-}
-.trace-image {
 	position: relative;
+	border: 3px solid #1a0303;
+	overflow: hidden;
+	border-radius: 0.4em;
 }
+
 .trace-image div {
 	position: absolute;
 	top: 0;

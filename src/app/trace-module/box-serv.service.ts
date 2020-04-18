@@ -46,14 +46,23 @@ export class BoxServService {
 	deleteBox() {
 		//what if box is not deleted!
 		// do this after successfully deleted box!
-		if (this.parentBox) {
+		if (this.parentBox && this.nextBoxes) {
 			this.nextBoxes.forEach((nextBox) => {
 				nextBox.parentBox = this.parentBox.id;
 				this.edit(nextBox.id, { parentBox: this.parentBox.id });
 			});
-			this.parentBox.nextBoxes = this.parentBox.nextBoxes.filter((b) => {
-				return b !== this.box.id;
-			});
+			if (this.parentBox) {
+				// console.log(this.parentBox.nextBoxes);
+
+				let nextBoxes = this.parentBox.nextBoxes.filter((b) => {
+					return b !== this.box.id;
+				});
+				// console.log(nextBoxes);
+				this.parentBox.nextBoxes = nextBoxes;
+				// console.log(this.parentBox.nextBoxes);
+				this.edit(this.parentBox.id, { nextBoxes: nextBoxes });
+			}
+
 			if (this.box.nextBoxes.length > 0) {
 				let nb = [];
 				this.box.nextBoxes.forEach((b) => {

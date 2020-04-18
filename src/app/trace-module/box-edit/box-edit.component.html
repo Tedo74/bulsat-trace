@@ -1,19 +1,24 @@
 <div class="box-edit-container">
-    <div class="box-nav-container">
-        <h4>Преместване на кутия</h4>
-        <div class="position-nav">
-            <button (click)="moveTop()">&#8679;</button>
-            <div class="left-right">
-                <button (click)="moveLeft()">&#8678;</button> <button (click)=" moveRight()">&#8680;</button>
-            </div>
-            <button (click)="moveBottom()">&#8681;</button>
+    <div class="position-nav-wrapper">
+        <div>
+            <button (click)="showPositionTools=!showPositionTools">Покажи / скрий позициониране</button>
         </div>
-        <div class="step-container">
-            <p>Стъпка на придвижване: {{stepToMoveBox}}</p>
-            <div class="step">
-                <button (click)="stepDown()">step--</button> <button (click)="stepUp()">step++</button>
+        <div class="box-nav-container" *ngIf="showPositionTools">
+            <h6>Преместване на кутия</h6>
+            <div class="position-nav">
+                <button (click)="moveTop()">&#8679;</button>
+                <div class="left-right">
+                    <button (click)="moveLeft()">&#8678;</button> <button (click)=" moveRight()">&#8680;</button>
+                </div>
+                <button (click)="moveBottom()">&#8681;</button>
             </div>
-            <!-- <button (click)="boxEdited()">ok</button> -->
+            <div class="step-container">
+                <p>Стъпка на придвижване: {{stepToMoveBox}}</p>
+                <div class="step">
+                    <button (click)="stepDown()">step--</button> <button (click)="stepUp()">step++</button>
+                </div>
+                <!-- <button (click)="boxEdited()">ok</button> -->
+            </div>
         </div>
     </div>
     <div class="form-wrapper" *ngIf="box">

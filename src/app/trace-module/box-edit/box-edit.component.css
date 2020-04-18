@@ -1,3 +1,12 @@
+.position-nav-wrapper {
+	background-color: #59342c;
+	text-align: center;
+	padding: 1em;
+}
+.position-nav-wrapper button {
+	margin: 0.5em auto;
+}
+
 .box-edit-container {
 	display: flex;
 	flex-direction: column;
@@ -5,7 +14,6 @@
 	padding-top: 0;
 }
 .box-nav-container {
-	background-color: #59342c;
 	padding: 1em;
 }
 
@@ -45,7 +53,8 @@
 	justify-content: center;
 }
 h4,
-h5 {
+h5,
+h6 {
 	color: #1a0303;
 	margin: 0.5em;
 	text-align: center;

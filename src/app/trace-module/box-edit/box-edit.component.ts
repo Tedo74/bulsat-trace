@@ -16,6 +16,7 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 	box: BoxModel;
 	stepToMoveBox = 20;
 	showUsers = false;
+	showPositionTools = false;
 	constructor(
 		private boxServ: BoxServService,
 		private route: ActivatedRoute,

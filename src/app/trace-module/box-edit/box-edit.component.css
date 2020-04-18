@@ -60,3 +60,27 @@ p {
 .button-submit button {
 	margin: 0.3em;
 }
+
+.delete-edit-user {
+	display: flex;
+}
+
+.delete-edit-user button {
+	padding: 0.2em;
+	margin-left: 0.2em;
+}
+
+.users {
+	background-color: #9f857f;
+	padding: 1em;
+}
+.users ol {
+	padding: 1em;
+}
+.users ol li {
+	padding: 0.2em 0.3em;
+}
+
+.show-users {
+	margin: 0 auto;
+}

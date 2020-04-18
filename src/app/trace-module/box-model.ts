@@ -4,7 +4,7 @@ export interface BoxModel {
 	freeFibers: number;
 	// number: number;
 	splitter: number;
-	users: [];
+	users: string[];
 	nextBoxes: string[];
 	parentBox?: string;
 	positionLeft: number;

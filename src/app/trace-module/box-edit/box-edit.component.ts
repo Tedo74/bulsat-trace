@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BoxModel } from '../box-model';
 import { BoxServService } from '../box-serv.service';
 import { NgForm } from '@angular/forms';
@@ -8,16 +8,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'app-box-edit',
 	templateUrl: './box-edit.component.html',
-	styleUrls: ['./box-edit.component.css']
+	styleUrls: [ './box-edit.component.css' ]
 })
 export class BoxEditComponent implements OnInit, OnDestroy {
-	// @Input() box: BoxModel;
+	changedUser: string;
 	boxChangedSubs: Subscription;
 	box: BoxModel;
 	stepToMoveBox = 20;
-	// @Input() trace = <BoxModel[]>[];
-	// @Output() boxEditedEvent = new EventEmitter();
-	constructor(private boxServ: BoxServService, private route: ActivatedRoute, private router: Router) { }
+	showUsers = false;
+	constructor(
+		private boxServ: BoxServService,
+		private route: ActivatedRoute,
+		private router: Router
+	) {}
 
 	ngOnInit(): void {
 		this.box = this.boxServ.box;
@@ -61,7 +64,7 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 	}
 
 	close() {
-		this.router.navigate(['../'], { relativeTo: this.route });
+		this.router.navigate([ '../' ], { relativeTo: this.route });
 	}
 
 	stepDown() {
@@ -75,5 +78,21 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 			this.boxServ.boxMoveStep++;
 			this.stepToMoveBox = this.boxServ.boxMoveStep;
 		}
+	}
+
+	deleteUser(user: string) {
+		let filteredUsers = this.box.users.filter((u) => u !== user);
+		this.box.users = [].concat(filteredUsers);
+		this.boxServ.setBox(this.box);
+		this.boxServ.edit(this.box.id, { users: filteredUsers });
+	}
+
+	editUser(user: string, index: number) {
+		if (this.changedUser) {
+			this.box.users[index] = this.changedUser;
+			this.changedUser = undefined;
+		}
+		// console.log(this.box.users);
+		this.boxServ.edit(this.box.id, { users: this.box.users });
 	}
 }

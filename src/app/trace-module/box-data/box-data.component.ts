@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	Output,
+	EventEmitter,
+	ViewChild,
+	ElementRef
+} from '@angular/core';
 import { BoxModel } from '../box-model';
 import { BoxServService } from '../box-serv.service';
 
@@ -9,10 +17,24 @@ import { BoxServService } from '../box-serv.service';
 })
 export class BoxDataComponent implements OnInit {
 	@Input() box: BoxModel;
-
+	@ViewChild('pon') pon: ElementRef;
 	constructor(private boxServ: BoxServService) {}
 
 	ngOnInit(): void {}
+
+	onUserAdd(value: string) {
+		if (value) {
+			let users = this.box.users;
+			if (!users) {
+				users = [];
+			}
+			if (!users.includes(value)) {
+				this.pon.nativeElement.value = '';
+				users.push(value);
+				this.boxServ.edit(this.box.id, { users: users });
+			}
+		}
+	}
 
 	editBox() {
 		this.boxServ.setBox(this.box);

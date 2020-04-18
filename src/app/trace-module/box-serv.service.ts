@@ -32,7 +32,7 @@ export class BoxServService {
 	constructor(
 		private db: AngularFirestore,
 		private router: Router // private tracesServ: TracesServService
-	) { }
+	) {}
 
 	editPartial(id: string, changes: Partial<BoxModel>, path: string) {
 		this.db.doc(`${path}/${id}`).update(changes);
@@ -66,7 +66,6 @@ export class BoxServService {
 	}
 
 	delete(id: string) {
-
 		this.db
 			.collection(this.pathToCollection)
 			.doc(id)

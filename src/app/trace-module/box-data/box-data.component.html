@@ -4,15 +4,17 @@
         <p>Свободни влакна: {{box.freeFibers}}</p>
         <p>Сплитер: {{box.splitter}}</p>
         <ul *ngIf="box.users">
-            <li *ngFor="let user of box.users">абонат с пон: {{user.id}}</li>
+            <li *ngFor="let user of box.users">абонат с пон: {{user}}</li>
         </ul>
     </div>
     <div class="box-nav">
         <div class="add-user">
-            <div> <label>пон:</label></div>
-            <div>
-                <input type="text">
-                <button>добави абонат</button>
+            <div class="user-input">
+                <label>пон:</label>
+                <input type="text" #pon>
+            </div>
+            <div class="add-user-button">
+                <button (click)="onUserAdd(pon.value)">добави</button>
             </div>
         </div>
     </div>

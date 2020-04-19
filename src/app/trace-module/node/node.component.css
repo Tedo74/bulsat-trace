@@ -20,6 +20,14 @@ h4 {
 
 .add-trace-btn {
 	margin-top: 0.4em;
+	font-size: 1.1em;
+	text-align: center;
+	/* font-weight: 800; */
+	background-color: #1a0303;
+	padding: 0.4em 0.4em;
+	border-radius: 0.2em;
+	width: 9em;
+	/* border: 2px solid white; */
 }
 
 .traces-menu {

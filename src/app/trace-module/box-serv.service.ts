@@ -102,6 +102,12 @@ export class BoxServService {
 		});
 	}
 
+	async createFirstBox(box: BoxModel, path: string) {
+		const docRef = await this.db.collection(path).add(box);
+		this.box = box;
+		return docRef.id;
+	}
+
 	moveRight() {
 		this.box.positionLeft = +this.box.positionLeft + this.boxMoveStep;
 		this.edit(this.box.id, { positionLeft: this.box.positionLeft });

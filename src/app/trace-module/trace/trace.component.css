@@ -10,7 +10,7 @@
 
 .parent-container {
 	align-items: center;
-	height: 90px;
+	height: 98px;
 	display: flex;
 	justify-content: center;
 }
@@ -29,7 +29,8 @@
 h5 {
 	color: white;
 	text-align: center;
-	background-color: #59342c;
+	background-color: #9f857f;
+	font-size: 1em;
 	padding: 0.2em;
 }
 .box,
@@ -71,11 +72,12 @@ h5 {
 	color: wheat;
 }
 .box-details {
-	background-color: #59342c;
+	background-color: #9f857f;
 	padding: 1em;
 	margin-bottom: 1em;
-	border: 2px solid #b98d83;
+	border: 2px solid #1a0303;
 	max-width: 300px;
+	border-radius: 0.3em;
 	color: black;
 }
 

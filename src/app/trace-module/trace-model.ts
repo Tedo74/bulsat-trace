@@ -1,5 +1,5 @@
 export interface TraceModel {
 	name: string;
-	firstBox: string;
+	firstBoxId: string;
 	imageUrl?: string;
 }

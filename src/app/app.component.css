@@ -1,0 +1,12 @@
+.wrapper {
+	display: flex;
+}
+
+.nav {
+	min-width: 10em;
+}
+
+.content {
+	flex-grow: 1;
+	flex-shrink: 1;
+}

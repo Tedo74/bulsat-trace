@@ -1,5 +1,5 @@
 export interface BoxModel {
-	id: string;
+	id?: string;
 	name: string;
 	freeFibers: number;
 	// number: number;

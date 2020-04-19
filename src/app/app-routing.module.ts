@@ -7,6 +7,7 @@ import { TracesComponent } from './trace-module/traces/traces.component';
 import { DeleteBoxComponent } from './trace-module/delete-box/delete-box.component';
 import { CreateBoxComponent } from './trace-module/create-box/create-box.component';
 import { BoxEditComponent } from './trace-module/box-edit/box-edit.component';
+import { CreateTraceComponent } from './trace-module/create-trace/create-trace.component';
 
 const routes: Routes = [
 	{ path: 'traces/:id', component: TracesComponent },
@@ -25,11 +26,12 @@ const routes: Routes = [
 			}
 		]
 	},
-	{ path: 'nodes', component: AllNodesComponent }
+	{ path: 'nodes', component: AllNodesComponent },
+	{ path: 'create-trace', component: CreateTraceComponent }
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+	imports: [ RouterModule.forRoot(routes) ],
+	exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -77,4 +77,23 @@ export class TracesServService {
 			this.traceChanged.next(this.trace);
 		});
 	}
+
+	async createTrace(trace: TraceModel, path: string) {
+		console.log(path);
+		console.log(trace);
+		if (path && trace) {
+			const docRef = await this.db.collection(path).add(trace);
+			console.log(docRef.id);
+			return docRef.id;
+			this.db
+				.collection(path)
+				.doc(docRef.id)
+				.collection('boxes')
+				.add({ test: 'tesstt' });
+		}
+	}
+
+	editTrace(path: string, id: string, changes: Partial<TraceModel>) {
+		this.db.doc(`${path}/${id}`).update(changes);
+	}
 }

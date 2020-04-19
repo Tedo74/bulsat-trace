@@ -11,4 +11,13 @@ export class BoxComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	boxShortName() {
+		let shortName = this.box.name.substring(0, 5);
+		if (this.box.name.length > shortName.length) {
+			return shortName + '...';
+		} else {
+			return this.box.name;
+		}
+	}
 }

@@ -2,7 +2,7 @@
     <div class="trace-image" *ngIf="imageUrl">
         <img [src]="imageUrl">
         <div *ngIf="trace">
-            <app-box *ngFor="let box of trace" class="small-box"
+            <app-box *ngFor="let box of trace" class="small-box-in-image"
                 [ngClass]="{'selected':box.id==selectedBoxId,'next':findNextBoxes(box.id),'parent':findParent(box.id, parentBoxId)}"
                 [style.left.px]="box.positionLeft" [style.top.px]="box.positionTop" (click)="getBox(box.id)">
             </app-box>

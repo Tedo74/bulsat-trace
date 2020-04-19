@@ -28,6 +28,7 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 		this.boxChangedSubs = this.boxServ.boxChanged.subscribe((box) => {
 			this.box = box;
 		});
+		this.stepToMoveBox = this.boxServ.boxMoveStep || 20;
 	}
 
 	ngOnDestroy() {

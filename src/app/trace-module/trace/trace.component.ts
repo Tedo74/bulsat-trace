@@ -149,6 +149,7 @@ export class TraceComponent implements OnInit, OnDestroy {
 	}
 
 	deleteTrace() {
+		this.traceInfoSubs.unsubscribe();
 		this.router.navigate([ '/delete-trace', this.id ]);
 	}
 }

@@ -32,8 +32,7 @@ export class DeleteTraceComponent implements OnInit {
 		this.db.getTraceIds().subscribe((d) => {
 			if (d.docs.length > 0) {
 				d.docs.forEach((el: { id: string }) => {
-					console.log(el.id);
-
+					// console.log(el.id);
 					if (el.id) {
 						this.boxServ.delete(el.id);
 					}

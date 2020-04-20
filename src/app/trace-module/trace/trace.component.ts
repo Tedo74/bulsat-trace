@@ -16,7 +16,7 @@ export class TraceComponent implements OnInit, OnDestroy {
 	traceData: TraceModel;
 	// idChanged: Subscription;
 	imageUrl: string;
-	// traceInfoSubs: Subscription;
+	traceInfoSubs: Subscription;
 	traceChanged: Subscription;
 	trace = <BoxModel[]>[];
 	traceImageUrl: string;
@@ -59,11 +59,11 @@ export class TraceComponent implements OnInit, OnDestroy {
 		this.traceChanged.unsubscribe();
 		// this.boxChanged.unsubscribe();
 		// this.idChanged.unsubscribe();
-		// this.traceInfoSubs.unsubscribe();
+		this.traceInfoSubs.unsubscribe();
 	}
 
 	currentTraceInfo() {
-		this.traceServ.getTraceInfo(`${this.traceServ.tracePath}`).subscribe((d) => {
+		this.traceInfoSubs = this.traceServ.getTraceInfo(`${this.traceServ.tracePath}`).subscribe((d) => {
 			if (d.imageUrl) {
 				this.imageUrl = 'https://drive.google.com/uc?id=' + d.imageUrl;
 			} else {

@@ -1,4 +1,7 @@
 <div class="trace-container">
+    <div>
+        <button [routerLink]="['delete-trace',id]">delete-trace</button>
+    </div>
     <div class="trace-image" *ngIf="imageUrl">
         <img [src]="imageUrl">
         <div *ngIf="trace">

@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { TraceModel } from './trace-model';
-// import { BoxServService } from './box-serv.service';
+// import * as firebase from 'firebase/app';
+// import 'firebase/firestore';
 
 @Injectable({
 	providedIn: 'root'
@@ -26,14 +27,14 @@ export class TracesServService {
 	// 	this.showTraceInNode = show;
 	// 	this.showTraceInNodeChange.next(this.showTraceInNode);
 	// }
-	traceId: string;
+	// traceId: string;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	nextPathChange = new Subject<string>();
 	changePath(newPath: string) {
 		this.path = newPath;
 		this.nextPathChange.next(this.path);
 	}
 
-	constructor(private db: AngularFirestore) {}
+	constructor(private db: AngularFirestore) { }
 
 	getCollection(path: string): Observable<any> {
 		return this.db.collection(path).snapshotChanges().pipe(
@@ -95,5 +96,23 @@ export class TracesServService {
 
 	editTrace(path: string, id: string, changes: Partial<TraceModel>) {
 		this.db.doc(`${path}/${id}`).update(changes);
+	}
+
+	getTraceIds(): Observable<any> {
+		return this.db.collection(`${this.tracePath}/boxes`).get()
+	}
+	deleteTraceDoc(id: string) {
+		console.log(this.tracePath);
+		console.log(`${this.nodePath}/traces/${id}`);
+
+		this.db
+			.collection(`${this.nodePath}/traces`)
+			.doc(id)
+			.delete()
+			.then((d) => {
+				console.log(d + ' delete');
+				// this.router.navigate([ '/nodes' ]);
+			})
+			.catch((err) => console.log(err));
 	}
 }

@@ -13,6 +13,7 @@ import { BoxEditComponent } from './box-edit/box-edit.component';
 import { DeleteBoxComponent } from './delete-box/delete-box.component';
 import { CreateBoxComponent } from './create-box/create-box.component';
 import { CreateTraceComponent } from './create-trace/create-trace.component';
+import { DeleteTraceComponent } from './delete-trace/delete-trace.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { CreateTraceComponent } from './create-trace/create-trace.component';
 		BoxEditComponent,
 		DeleteBoxComponent,
 		CreateBoxComponent,
-		CreateTraceComponent
+		CreateTraceComponent,
+		DeleteTraceComponent
 	],
 	imports: [ CommonModule, RouterModule, FormsModule ],
 	exports: [ RouterModule, AllNodesComponent ]

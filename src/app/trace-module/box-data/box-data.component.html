@@ -1,11 +1,13 @@
 <ng-container *ngIf="box">
     <div class="box-data">
         <h4 class="box-data-heading">{{box.name}}</h4>
-        <p>Свободни влакна: {{box.freeFibers}}</p>
-        <p>Сплитер: {{box.splitter}}</p>
-        <ul *ngIf="box.users">
-            <li *ngFor="let user of box.users">абонат с пон: {{user}}</li>
-        </ul>
+        <div class="info">
+            <p>Свободни влакна: <span class="data">{{box.freeFibers}}</span></p>
+            <p *ngIf="box.splitter!= 0">Сплитер: <span class="data">{{box.splitter}}</span></p>
+            <ul *ngIf="box.users">
+                <li *ngFor="let user of box.users">абонат с пон: <span class="data"> {{user}}</span></li>
+            </ul>
+        </div>
     </div>
     <div class="box-nav">
         <div class="add-user">

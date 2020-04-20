@@ -80,15 +80,15 @@ button {
 	padding: 0.2em 0.6em;
 	background-color: rgb(26, 3, 3);
 	color: white;
-	border: 2px solid white;
+	border: 1px solid white;
 	border-radius: 0.2em;
-	font-weight: 800;
+	/* font-weight: 800; */
 }
 
 button:hover {
 	background-color: white;
 	color: rgb(26, 3, 3);
-	border: 2px solid white;
+	border: 1px solid white;
 	border-radius: 0.2em;
 }
 

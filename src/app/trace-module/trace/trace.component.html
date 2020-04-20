@@ -21,10 +21,10 @@
             <div *ngIf="trace" class="box-details">
                 <app-box-data *ngIf="box" [box]="box"></app-box-data>
                 <div class="create-delete" *ngIf="box">
-                    <button [routerLink]="['delete',box.id]">delete</button>
+                    <button [routerLink]="['delete',box.id]">изтрий</button>
                     <!-- <app-delete-box [id]="box.id"></app-delete-box> -->
-                    <button routerLink="create">create</button>
-                    <button routerLink="edit">edit</button>
+                    <button routerLink="create">създай</button>
+                    <button routerLink="edit">редакция</button>
                 </div>
             </div>
             <h5>Следващи кутии...</h5>

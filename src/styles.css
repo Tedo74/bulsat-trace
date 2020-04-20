@@ -91,3 +91,11 @@ button:hover {
 	border: 2px solid white;
 	border-radius: 0.2em;
 }
+
+input {
+	border-style: none;
+	border-radius: 0.2em;
+	border-radius: 0.2em;
+	padding: 0.2em;
+	border: 1px solid #1a0303;
+}

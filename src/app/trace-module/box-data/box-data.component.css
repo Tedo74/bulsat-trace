@@ -45,3 +45,12 @@
 .add-user-button {
 	margin: 0 auto;
 }
+
+.user-input {
+	display: flex;
+	flex-direction: column;
+}
+.user-input label,
+.user-input input {
+	display: block;
+}

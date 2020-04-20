@@ -27,9 +27,13 @@ export class CreateTraceComponent implements OnInit {
 	createTrace(f: NgForm) {
 		if (this.path) {
 			this.path = this.traceServ.nodePath + '/traces';
+			let imgUrl = f.value.imageUrl;
+			let res = imgUrl.replace(/https:\/\/drive[.]google[.]com\/file\/d\//g, '');
+			let result = res.replace(/\/view\?usp=sharing/g, '');
+
 			this.traceServ
 				.createTrace(
-					{ name: f.value.name, firstBoxId: '', imageUrl: f.value.imageUrl },
+					{ name: f.value.name, firstBoxId: '', imageUrl: result },
 					this.path
 				)
 				.then((id: string) => {

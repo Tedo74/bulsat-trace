@@ -12,6 +12,7 @@ import { DeleteTraceComponent } from './trace-module/delete-trace/delete-trace.c
 
 const routes: Routes = [
 	{ path: 'traces/:id', component: TracesComponent },
+	{ path: 'delete-trace/:id', component: DeleteTraceComponent },
 	{
 		path: 'node/:id',
 		component: NodeComponent,
@@ -21,7 +22,6 @@ const routes: Routes = [
 				path: 'trace/:id',
 				component: TraceComponent,
 				children: [
-					{ path: 'delete-trace/:id', component: DeleteTraceComponent },
 					{ path: 'delete/:id', component: DeleteBoxComponent },
 					{ path: 'create', component: CreateBoxComponent },
 					{ path: 'edit', component: BoxEditComponent }
@@ -33,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+	imports: [ RouterModule.forRoot(routes) ],
+	exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -117,3 +117,18 @@ h5 {
 .create-delete button {
 	margin: 0.2em;
 }
+
+.danger-wrapper {
+	padding: 0.5em;
+}
+
+.danger {
+	color: red;
+	background-color: white;
+	border-color: red;
+}
+
+.danger:hover {
+	background-color: red;
+	color: white;
+}

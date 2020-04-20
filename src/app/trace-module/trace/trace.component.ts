@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { TracesServService } from '../traces-serv.service';
 import { BoxModel } from '../box-model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BoxServService } from '../box-serv.service';
 import { TraceModel } from '../trace-model';
@@ -9,7 +9,7 @@ import { TraceModel } from '../trace-model';
 @Component({
 	selector: 'app-trace',
 	templateUrl: './trace.component.html',
-	styleUrls: ['./trace.component.css']
+	styleUrls: [ './trace.component.css' ]
 })
 export class TraceComponent implements OnInit, OnDestroy {
 	id: string;
@@ -31,8 +31,9 @@ export class TraceComponent implements OnInit, OnDestroy {
 	constructor(
 		private traceServ: TracesServService,
 		private route: ActivatedRoute,
-		private boxServ: BoxServService
-	) { }
+		private boxServ: BoxServService,
+		private router: Router
+	) {}
 
 	ngOnInit(): void {
 		this.route.params.subscribe((p) => {
@@ -63,28 +64,30 @@ export class TraceComponent implements OnInit, OnDestroy {
 	}
 
 	currentTraceInfo() {
-		this.traceInfoSubs = this.traceServ.getTraceInfo(`${this.traceServ.tracePath}`).subscribe((d) => {
-			if (d.imageUrl) {
-				this.imageUrl = 'https://drive.google.com/uc?id=' + d.imageUrl;
-			} else {
-				this.imageUrl = undefined;
-			}
-			this.firstBoxId = d.firstBoxId;
-			if (this.selectedBoxId) {
-				let faundBox1 = this.findBox(this.selectedBoxId);
-				if (faundBox1) {
-					this.selectedBoxId = this.selectedBoxId;
-					// this.box=faundBox1;
+		this.traceInfoSubs = this.traceServ
+			.getTraceInfo(`${this.traceServ.tracePath}`)
+			.subscribe((d) => {
+				if (d.imageUrl) {
+					this.imageUrl = 'https://drive.google.com/uc?id=' + d.imageUrl;
+				} else {
+					this.imageUrl = undefined;
+				}
+				this.firstBoxId = d.firstBoxId;
+				if (this.selectedBoxId) {
+					let faundBox1 = this.findBox(this.selectedBoxId);
+					if (faundBox1) {
+						this.selectedBoxId = this.selectedBoxId;
+						// this.box=faundBox1;
+					} else {
+						this.selectedBoxId = d.firstBoxId;
+						this.selectedBoxId = this.selectedBoxId;
+					}
 				} else {
 					this.selectedBoxId = d.firstBoxId;
 					this.selectedBoxId = this.selectedBoxId;
 				}
-			} else {
-				this.selectedBoxId = d.firstBoxId;
-				this.selectedBoxId = this.selectedBoxId;
-			}
-			this.getBox(this.selectedBoxId);
-		});
+				this.getBox(this.selectedBoxId);
+			});
 	}
 
 	getBox(id: string) {
@@ -143,5 +146,9 @@ export class TraceComponent implements OnInit, OnDestroy {
 
 	findBox(id: string): BoxModel {
 		return this.trace.find((element) => element.id === id);
+	}
+
+	deleteTrace() {
+		this.router.navigate([ '/delete-trace', this.id ]);
 	}
 }

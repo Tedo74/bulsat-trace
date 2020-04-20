@@ -9,6 +9,7 @@ import { TracesServService } from '../traces-serv.service';
 	styleUrls: [ './delete-box.component.css' ]
 })
 export class DeleteBoxComponent implements OnInit {
+	id: string;
 	constructor(
 		private boxServ: BoxServService,
 		private traseServ: TracesServService,
@@ -16,7 +17,10 @@ export class DeleteBoxComponent implements OnInit {
 		private router: Router
 	) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		// this.id = this.route.snapshot.params.id;
+		// console.log(this.id);
+	}
 	delete() {
 		this.boxServ.deleteBox();
 		this.traseServ.getTrace(this.boxServ.pathToCollection);

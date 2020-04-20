@@ -20,6 +20,7 @@ export class TraceComponent implements OnInit, OnDestroy {
 	traceChanged: Subscription;
 	trace = <BoxModel[]>[];
 	traceImageUrl: string;
+	traceFirstBoxIdOriginal: string;
 	nextBoxes = <BoxModel[]>[];
 	firstBoxId: string;
 	parentBoxId: string;
@@ -73,6 +74,7 @@ export class TraceComponent implements OnInit, OnDestroy {
 					this.imageUrl = undefined;
 				}
 				this.firstBoxId = d.firstBoxId;
+				this.traceFirstBoxIdOriginal = d.firstBoxId;
 				if (this.selectedBoxId) {
 					let faundBox1 = this.findBox(this.selectedBoxId);
 					if (faundBox1) {
@@ -151,5 +153,15 @@ export class TraceComponent implements OnInit, OnDestroy {
 	deleteTrace() {
 		this.traceInfoSubs.unsubscribe();
 		this.router.navigate([ '/delete-trace', this.id ]);
+	}
+
+	deleteBox(id: string) {
+		// [routerLink]="['delete',box.id]
+		if (this.traceFirstBoxIdOriginal === id) {
+			alert('Това е първа кутия в трасето! Може да се изтрие с цялото трасе.');
+			return;
+		} else {
+			this.router.navigate([ './delete', id ], { relativeTo: this.route });
+		}
 	}
 }

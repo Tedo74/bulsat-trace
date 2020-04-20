@@ -15,6 +15,7 @@ const routes: Routes = [
 		path: 'node/:id',
 		component: NodeComponent,
 		children: [
+			{ path: 'create-trace', component: CreateTraceComponent },
 			{
 				path: 'trace/:id',
 				component: TraceComponent,
@@ -26,8 +27,7 @@ const routes: Routes = [
 			}
 		]
 	},
-	{ path: 'nodes', component: AllNodesComponent },
-	{ path: 'create-trace', component: CreateTraceComponent }
+	{ path: 'nodes', component: AllNodesComponent }
 ];
 
 @NgModule({

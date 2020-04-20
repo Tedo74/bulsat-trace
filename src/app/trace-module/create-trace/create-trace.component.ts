@@ -3,6 +3,7 @@ import { TracesServService } from '../traces-serv.service';
 import { NgForm } from '@angular/forms';
 import { BoxServService } from '../box-serv.service';
 import { BoxModel } from '../box-model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-create-trace',
@@ -11,7 +12,12 @@ import { BoxModel } from '../box-model';
 })
 export class CreateTraceComponent implements OnInit {
 	path: string;
-	constructor(private traceServ: TracesServService, private boxServ: BoxServService) {}
+	constructor(
+		private traceServ: TracesServService,
+		private boxServ: BoxServService,
+		private route: ActivatedRoute,
+		private router: Router
+	) {}
 
 	ngOnInit(): void {
 		console.log(this.traceServ.nodePath + '/traces');
@@ -42,8 +48,10 @@ export class CreateTraceComponent implements OnInit {
 					};
 					this.boxServ.createFirstBox(firstBox, currentPath).then((boxId) => {
 						this.traceServ.editTrace(this.path, id, { firstBoxId: boxId });
-						// this.boxServ.edit(boxId, { id: boxId });
-					}); //todo change trace fb id
+						this.router.navigate([ `../trace/${id}` ], {
+							relativeTo: this.route
+						});
+					});
 				});
 		}
 	}

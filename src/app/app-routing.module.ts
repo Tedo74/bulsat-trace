@@ -9,8 +9,10 @@ import { CreateBoxComponent } from './trace-module/create-box/create-box.compone
 import { BoxEditComponent } from './trace-module/box-edit/box-edit.component';
 import { CreateTraceComponent } from './trace-module/create-trace/create-trace.component';
 import { DeleteTraceComponent } from './trace-module/delete-trace/delete-trace.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
+	{ path: 'login', component: LoginComponent },
 	{ path: 'traces/:id', component: TracesComponent },
 	{ path: 'delete-trace/:id', component: DeleteTraceComponent },
 	{

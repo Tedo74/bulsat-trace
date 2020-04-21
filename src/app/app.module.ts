@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { TraceModModule } from './trace-module/trace-mod.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
 	declarations: [ AppComponent, NavComponent ],
@@ -17,7 +18,8 @@ import { TraceModModule } from './trace-module/trace-mod.module';
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
-		TraceModModule
+		TraceModModule,
+		AuthModule
 	],
 	providers: [],
 	bootstrap: [ AppComponent ]

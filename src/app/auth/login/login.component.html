@@ -1,0 +1,16 @@
+<div class="form-wrapper">
+    <form #f="ngForm" (ngSubmit)="onLogin(f)" class="form-auth">
+        <p>
+            <label for="mail">Email:</label>
+            <input type="email" id="mail" name="email" #mail ngModel email required placeholder="email"
+                autocomplete="on" [ngClass]="{error: loginErrorMessge}">
+        </p>
+        <p>
+            <label for=" pass">Парола:</label>
+            <input type="password" id="pass" name="password" [(ngModel)]="pass" placeholder="парола" autocomplete="on"
+                [ngClass]="{error: loginErrorMessge}">
+        </p>
+        <p *ngIf="loginErrorMessge" class="error"> Невалиден email или парола</p>
+        <button #btn type="submit" [disabled]="f.invalid || !pass">Вход</button>
+    </form>
+</div>

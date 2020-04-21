@@ -10,9 +10,10 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { TraceModModule } from './trace-module/trace-mod.module';
 import { AuthModule } from './auth/auth.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-	declarations: [ AppComponent, NavComponent ],
+	declarations: [ AppComponent, NavComponent, HomeComponent ],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

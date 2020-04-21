@@ -11,18 +11,34 @@ import { CreateTraceComponent } from './trace-module/create-trace/create-trace.c
 import { DeleteTraceComponent } from './trace-module/delete-trace/delete-trace.component';
 import { LoginComponent } from './auth/login/login.component';
 
+import { AuthGuard } from './auth/auth.guard';
+import { HomeComponent } from './home/home.component';
+
 const routes: Routes = [
 	{ path: 'login', component: LoginComponent },
-	{ path: 'traces/:id', component: TracesComponent },
-	{ path: 'delete-trace/:id', component: DeleteTraceComponent },
+	{ path: 'home', component: HomeComponent },
+	{ path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [ AuthGuard ] },
+	{ path: '', redirectTo: 'login', pathMatch: 'full' },
+	{ path: 'traces/:id', component: TracesComponent, canActivate: [ AuthGuard ] },
+	{
+		path: 'delete-trace/:id',
+		component: DeleteTraceComponent,
+		canActivate: [ AuthGuard ]
+	},
 	{
 		path: 'node/:id',
 		component: NodeComponent,
+		canActivate: [ AuthGuard ],
 		children: [
-			{ path: 'create-trace', component: CreateTraceComponent },
+			{
+				path: 'create-trace',
+				component: CreateTraceComponent,
+				canActivate: [ AuthGuard ]
+			},
 			{
 				path: 'trace/:id',
 				component: TraceComponent,
+				canActivate: [ AuthGuard ],
 				children: [
 					{ path: 'delete/:id', component: DeleteBoxComponent },
 					{ path: 'create', component: CreateBoxComponent },
@@ -31,7 +47,7 @@ const routes: Routes = [
 			}
 		]
 	},
-	{ path: 'nodes', component: AllNodesComponent }
+	{ path: 'nodes', component: AllNodesComponent, canActivate: [ AuthGuard ] }
 ];
 
 @NgModule({

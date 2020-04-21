@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
 	{ path: 'login', component: LoginComponent },
 	{ path: 'home', component: HomeComponent },
-	{ path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [ AuthGuard ] },
+	// { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [ AuthGuard ] },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: 'traces/:id', component: TracesComponent, canActivate: [ AuthGuard ] },
 	{

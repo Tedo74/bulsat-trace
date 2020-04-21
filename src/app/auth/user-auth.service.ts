@@ -19,7 +19,7 @@ export class UserAuthService {
 				console.log('logged');
 				this.isUserAuth = true;
 				this.authChange.next(true);
-				this.router.navigate([ '/' ]);
+				this.router.navigate([ '/home' ]);
 			})
 			.catch((err) => {
 				this.authChange.next(false);

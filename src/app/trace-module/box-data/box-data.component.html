@@ -5,7 +5,11 @@
             <p>Свободни влакна: <span class="data">{{box.freeFibers}}</span></p>
             <p *ngIf="box.splitter!= 0">Сплитер: <span class="data">{{box.splitter}}</span></p>
             <ul *ngIf="box.users">
-                <li *ngFor="let user of box.users">абонат с пон: <span class="data"> {{user}}</span></li>
+                <li *ngFor="let user of box.users">абонат с пон:
+                    <span class="data">
+                        <a [href]="'https://lookup.bulsat.com/c/onu.pl?onu='+user" target="_blank">{{user}}</a>
+                    </span>
+                </li>
             </ul>
         </div>
     </div>

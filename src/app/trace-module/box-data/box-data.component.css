@@ -54,3 +54,7 @@
 .user-input input {
 	display: block;
 }
+
+.info a {
+	display: inline-block;
+}

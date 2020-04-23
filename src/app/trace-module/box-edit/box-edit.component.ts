@@ -82,16 +82,16 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	deleteUser(user: string) {
-		let filteredUsers = this.box.users.filter((u) => u !== user);
+	deleteUser(ponNumber: string) {
+		let filteredUsers = this.box.users.filter((u) => u.pon !== ponNumber);
 		this.box.users = [].concat(filteredUsers);
 		this.boxServ.setBox(this.box);
 		this.boxServ.edit(this.box.id, { users: filteredUsers });
 	}
 
-	editUser(user: string, index: number) {
+	editUser(ponNumber: string, index: number) {
 		if (this.changedUser) {
-			this.box.users[index] = this.changedUser;
+			this.box.users[index]['pon'] = this.changedUser;
 			this.changedUser = undefined;
 		}
 		// console.log(this.box.users);

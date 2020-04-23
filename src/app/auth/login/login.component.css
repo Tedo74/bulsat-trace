@@ -1,7 +1,7 @@
 .form-wrapper {
 	margin: 1.5em auto;
 	background-color: rgb(165, 42, 42);
-	max-width: 30em;
+	max-width: 22em;
 	padding: 1em;
 	border-radius: 0.5em;
 	font-size: 1.2em;
@@ -10,7 +10,7 @@
 
 .form-auth {
 	border: 2px solid #1a0303;
-	padding: 2em;
+	padding: 0.8em;
 	background-color: #9f857f;
 	/* #9f857f; */
 	border-radius: inherit;

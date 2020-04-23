@@ -14,6 +14,7 @@ import { DeleteBoxComponent } from './delete-box/delete-box.component';
 import { CreateBoxComponent } from './create-box/create-box.component';
 import { CreateTraceComponent } from './create-trace/create-trace.component';
 import { DeleteTraceComponent } from './delete-trace/delete-trace.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
 	declarations: [
@@ -27,7 +28,8 @@ import { DeleteTraceComponent } from './delete-trace/delete-trace.component';
 		DeleteBoxComponent,
 		CreateBoxComponent,
 		CreateTraceComponent,
-		DeleteTraceComponent
+		DeleteTraceComponent,
+		UserDetailsComponent
 	],
 	imports: [ CommonModule, RouterModule, FormsModule ],
 	exports: [ RouterModule, AllNodesComponent ]

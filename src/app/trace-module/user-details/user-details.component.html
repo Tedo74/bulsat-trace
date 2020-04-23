@@ -1,0 +1,8 @@
+<div *ngIf="user" class="user">
+    <div>
+        <p>Пон: {{user.pon}}</p>
+        <p>Име: {{user?.name}}</p>
+        <p>Адрес: {{user?.address}}</p>
+    </div>
+    <button (click)="close()">close</button>
+</div>

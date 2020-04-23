@@ -46,6 +46,11 @@
 	margin: 0 auto;
 }
 
+.add-user h6 {
+	text-align: center;
+	margin: 0 auto;
+}
+
 .user-input {
 	display: flex;
 	flex-direction: column;
@@ -55,6 +60,16 @@
 	display: block;
 }
 
-.info a {
+.info a,
+.info button {
 	display: inline-block;
+}
+
+.info button {
+	margin-left: 0.2em;
+	padding: 0.1em 0.2em;
+}
+.info ul > li {
+	padding: 0.1em;
+	margin: 0.3em 0.1em;
 }

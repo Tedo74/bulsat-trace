@@ -7,21 +7,35 @@
             <ul *ngIf="box.users">
                 <li *ngFor="let user of box.users">абонат с пон:
                     <span class="data">
-                        <a [href]="'https://lookup.bulsat.com/c/onu.pl?onu='+user" target="_blank">{{user}}</a>
+                        <a [href]="'https://lookup.bulsat.com/c/onu.pl?onu='+user.pon" target="_blank">{{user.pon}}</a>
                     </span>
+                    <button (click)="userDetails(user)">details</button>
                 </li>
             </ul>
         </div>
     </div>
     <div class="box-nav">
-        <div class="add-user">
+        <!-- <div > -->
+        <form form #f="ngForm" (ngSubmit)="onAddUser(f)" class="add-user">
+            <h6>Добави абонат</h6>
             <div class="user-input">
-                <label>пон:</label>
-                <input type="text" #pon>
+                <p>
+                    <label for="pon">пон:</label>
+                    <input type="text" #pon ngModel name="pon" id="pon">
+                </p>
+                <p>
+                    <label for="name">име:</label>
+                    <input type="text" #name ngModel name="name" id="name">
+                </p>
+                <p>
+                    <label for="address">адрес:</label>
+                    <input type="text" #address ngModel name="address" id="address">
+                </p>
             </div>
             <div class="add-user-button">
-                <button (click)="onUserAdd(pon.value)">добави</button>
+                <button type="submit">добави</button>
             </div>
-        </div>
+        </form>
+        <!-- </div> -->
     </div>
 </ng-container>

@@ -13,6 +13,7 @@ import { LoginComponent } from './auth/login/login.component';
 
 import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { UserDetailsComponent } from './trace-module/user-details/user-details.component';
 
 const routes: Routes = [
 	{ path: 'login', component: LoginComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
 				children: [
 					{ path: 'delete/:id', component: DeleteBoxComponent },
 					{ path: 'create', component: CreateBoxComponent },
+					{ path: 'user', component: UserDetailsComponent },
 					{ path: 'edit', component: BoxEditComponent }
 				]
 			}

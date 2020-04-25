@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from './user-details/user-model';
+import { UserModel } from './users/user-model';
 import { Subject } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class UserDataService {
-	user: UserModel;
-	userChanged = new Subject<UserModel>();
+	users: UserModel[];
+	usersChanged = new Subject<UserModel[]>();
 	constructor() {}
 
-	changeUser(user: UserModel) {
-		this.user = user;
-		this.userChanged.next(this.user);
+	changeUsers(users: UserModel[]) {
+		this.users = users;
+		this.usersChanged.next(this.users);
 	}
 }

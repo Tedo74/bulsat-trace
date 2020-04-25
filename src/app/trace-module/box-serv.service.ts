@@ -4,8 +4,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { TracesServService } from './traces-serv.service';
-import { stringify } from 'querystring';
 
 @Injectable({
 	providedIn: 'root'

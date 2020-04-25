@@ -1,4 +1,4 @@
-import { UserModel } from './user-details/user-model';
+import { UserModel } from './users/user-model';
 
 export interface BoxModel {
 	id?: string;

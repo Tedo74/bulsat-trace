@@ -1,0 +1,74 @@
+.users {
+	display: flex;
+	flex-direction: column;
+	padding: 0.8em;
+	background-color: #9f857f;
+	align-items: center;
+	border: 2px solid rgb(26, 3, 3);
+	border-radius: 0.2em;
+}
+.users > ul {
+	padding: 0.5em;
+	min-width: 19em;
+}
+
+.users ul > li {
+	display: flex;
+	flex-direction: column;
+	padding: 0.5em;
+}
+
+.users input {
+	width: 100%;
+}
+
+li:nth-of-type(odd) {
+	background-color: #a52a2a;
+}
+
+li:nth-of-type(even) {
+	background-color: burlywood;
+}
+
+.user-pon {
+	display: flex;
+}
+.user-pon span {
+	margin-left: 0.1em;
+}
+
+.user-info-btn {
+	display: flex;
+	justify-content: center;
+}
+
+.user-info-btn button {
+	margin: 0.2em;
+	padding: 0.1em 0.3em;
+}
+
+.delete-edit-user {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.delete-edit-user-btns {
+	display: flex;
+	justify-content: center;
+}
+.delete-edit-user-btns button {
+	margin: 0.2em;
+}
+.danger {
+	background-color: red;
+}
+div.input {
+	padding-bottom: 0.3em;
+}
+div.input {
+	padding-bottom: 0.3em;
+}
+div.input label,
+div.input input {
+	display: block;
+}

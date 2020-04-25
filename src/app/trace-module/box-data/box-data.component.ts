@@ -10,7 +10,7 @@ import {
 import { BoxModel } from '../box-model';
 import { BoxServService } from '../box-serv.service';
 import { NgForm } from '@angular/forms';
-import { UserModel } from '../user-details/user-model';
+import { UserModel } from '../users/user-model';
 import { UserDataService } from '../user-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -69,6 +69,7 @@ export class BoxDataComponent implements OnInit {
 			// 	let userData = { ...f.value };
 			// 	users.push(([ ponNumber ] = userData));
 			this.boxServ.edit(this.box.id, { users: users });
+			this.userServ.changeUsers(users);
 			// }
 		}
 	}
@@ -77,9 +78,9 @@ export class BoxDataComponent implements OnInit {
 		this.boxServ.setBox(this.box);
 	}
 
-	userDetails(user: UserModel) {
-		this.userServ.user = user;
-		this.userServ.changeUser(user);
-		this.router.navigate([ './user' ], { relativeTo: this.route });
+	users(users: UserModel[]) {
+		this.userServ.users = users;
+		this.userServ.changeUsers(users);
+		this.router.navigate([ './users' ], { relativeTo: this.route });
 	}
 }

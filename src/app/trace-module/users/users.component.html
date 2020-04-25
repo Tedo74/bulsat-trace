@@ -1,0 +1,40 @@
+<div class="users">
+    <ul *ngIf="users">
+        <li *ngFor="let user of users; let i=index">
+            <div class="user-pon">
+                <span>пон:</span> <span class="data">
+                    <a [href]="'https://lookup.bulsat.com/c/onu.pl?onu='+user.pon" target="_blank">{{user.pon}}</a>
+                </span>
+            </div>
+            <p>Име: {{user?.name}}</p>
+            <p>Адрес: {{user?.address}}</p>
+            <div class="user-info-btn">
+                <button (click)="showOnMap()">покажи</button>
+                <button (click)="editUser(user, i)">edit</button>
+            </div>
+            <!-- <div class="edit-user"> -->
+            <div class="delete-edit-user" *ngIf="showEdit && user.pon === openedPonForEdit && i===currentIndex">
+                <div class="input">
+                    <label for="pon">пон</label>
+                    <input type="text" [value]="user.pon"
+                        (input)="user.pon = $event.target.value; openedPonForEdit=user.pon" id="pon">
+                </div>
+                <div class="input">
+                    <label for="name">име</label>
+                    <input type="text" [value]="user.name" (input)="user.name = $event.target.value" id="name">
+                </div>
+                <div class="input">
+                    <label for="address">адрес</label>
+                    <input type="text" [value]="user.address" (input)="user.address = $event.target.value" id="address">
+                </div>
+                <div class="delete-edit-user-btns">
+                    <button (click)=" editUserSave(user, i)">ok</button>
+                    <button (click)=" deleteUser(user.pon)" class="danger">delete</button>
+                    <button (click)=" close()">close</button>
+                </div>
+            </div>
+            <!-- </div> -->
+        </li>
+    </ul>
+    <button (click)="exit()">exit</button>
+</div>

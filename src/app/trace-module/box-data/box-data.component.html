@@ -4,14 +4,7 @@
         <div class="info">
             <p>Свободни влакна: <span class="data">{{box.freeFibers}}</span></p>
             <p *ngIf="box.splitter!= 0">Сплитер: <span class="data">{{box.splitter}}</span></p>
-            <ul *ngIf="box.users">
-                <li *ngFor="let user of box.users">абонат с пон:
-                    <span class="data">
-                        <a [href]="'https://lookup.bulsat.com/c/onu.pl?onu='+user.pon" target="_blank">{{user.pon}}</a>
-                    </span>
-                    <button (click)="userDetails(user)">details</button>
-                </li>
-            </ul>
+            <button *ngIf="box.users.length>0" (click)="users(box.users)">абонати</button>
         </div>
     </div>
     <div class="box-nav">

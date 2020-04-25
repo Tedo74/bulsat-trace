@@ -41,21 +41,23 @@
             </div>
         </form>
     </div>
-    <div class="users">
-        <div>
+    <!-- <div class="users"> -->
+    <!-- <div>
             <button (click)="showUsers= !showUsers" class="show-users">Покажи /скрий абонатите</button>
-        </div>
-        <div *ngIf="showUsers">
+        </div> -->
+    <!-- <div *ngIf="showUsers">
             <h5>Абонати</h5>
             <ol *ngIf="box.users">
                 <li *ngFor="let user of box.users; let i=index">
                     <div class="delete-edit-user">
-                        <input type="text" [value]="user" (input)="changedUser = $event.target.value">
+                        <input type="text" [value]="user.pon" (input)="user.pon = $event.target.value">
+                        <input type="text" [value]="user.name" (input)="user.name = $event.target.value">
+                        <input type="text" [value]="user.address" (input)="user.address = $event.target.value">
                         <button (click)=" editUser(user, i)">ok</button>
-                        <button (click)=" deleteUser(user)">delete</button>
+                        <button (click)=" deleteUser(user.pon)">delete</button>
                     </div>
                 </li>
             </ol>
-        </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
 </div>

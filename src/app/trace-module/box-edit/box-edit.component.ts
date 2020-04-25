@@ -4,6 +4,7 @@ import { BoxServService } from '../box-serv.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserModel } from '../users/user-model';
 
 @Component({
 	selector: 'app-box-edit',
@@ -11,7 +12,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 	styleUrls: [ './box-edit.component.css' ]
 })
 export class BoxEditComponent implements OnInit, OnDestroy {
-	changedUser: string;
 	boxChangedSubs: Subscription;
 	box: BoxModel;
 	stepToMoveBox = 20;
@@ -89,10 +89,11 @@ export class BoxEditComponent implements OnInit, OnDestroy {
 		this.boxServ.edit(this.box.id, { users: filteredUsers });
 	}
 
-	editUser(ponNumber: string, index: number) {
-		if (this.changedUser) {
-			this.box.users[index]['pon'] = this.changedUser;
-			this.changedUser = undefined;
+	editUser(user: UserModel, index: number) {
+		if (user.pon) {
+			this.box.users[index]['pon'] = user.pon;
+			this.box.users[index]['name'] = user.name;
+			this.box.users[index]['address'] = user.address;
 		}
 		// console.log(this.box.users);
 		this.boxServ.edit(this.box.id, { users: this.box.users });

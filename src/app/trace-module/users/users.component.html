@@ -1,6 +1,6 @@
 <div class="users">
     <ul *ngIf="users">
-        <li *ngFor="let user of users; let i=index">
+        <li *ngFor="let user of users; let i=index;" (mouseover)="showOnMap(user.pon)">
             <div class="user-pon">
                 <span>пон:</span> <span class="data">
                     <a [href]="'https://lookup.bulsat.com/c/onu.pl?onu='+user.pon" target="_blank">{{user.pon}}</a>
@@ -8,12 +8,42 @@
             </div>
             <p>Име: {{user?.name}}</p>
             <p>Адрес: {{user?.address}}</p>
+            <p>Доп. инфо: {{user?.info}}</p>
             <div class="user-info-btn">
-                <button (click)="showOnMap()">покажи</button>
+                <button (click)="showOnMap(user.pon)">show on map</button>
                 <button (click)="editUser(user, i)">edit</button>
             </div>
             <!-- <div class="edit-user"> -->
             <div class="delete-edit-user" *ngIf="showEdit && user.pon === openedPonForEdit && i===currentIndex">
+
+                <!-- position -->
+                <div class="position-nav-wrapper">
+                    <div>
+                        <button (click)="showPositionTools=!showPositionTools">Покажи / скрий позициониране</button>
+                    </div>
+                    <div class="user-nav-container" *ngIf="showPositionTools">
+                        <h6>Преместване на абонат</h6>
+                        <div class="position-nav">
+                            <button (click)="moveTop(user)">&#8679;</button>
+                            <div class="left-right">
+                                <button (click)="moveLeft(user)">&#8678;</button> <button
+                                    (click)=" moveRight(user)">&#8680;</button>
+                            </div>
+                            <button (click)="moveBottom(user)">&#8681;</button>
+                        </div>
+                        <div class="step-container">
+                            <p>Стъпка на придвижване: {{stepToMoveUser}}</p>
+                            <div class="step">
+                                <button (click)="stepDown()">step--</button> <button (click)="stepUp()">step++</button>
+                            </div>
+                            <div class="save-location">
+                                <button (click)="saveUserLocation()">запази</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end position -->
+
                 <div class="input">
                     <label for="pon">пон</label>
                     <input type="text" [value]="user.pon"
@@ -26,6 +56,10 @@
                 <div class="input">
                     <label for="address">адрес</label>
                     <input type="text" [value]="user.address" (input)="user.address = $event.target.value" id="address">
+                </div>
+                <div class="input">
+                    <label for="add-info">доп. инфо</label>
+                    <input type="text" [value]="user.info" (input)="user.info = $event.target.value" id="address">
                 </div>
                 <div class="delete-edit-user-btns">
                     <button (click)=" editUserSave(user, i)">ok</button>

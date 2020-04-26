@@ -63,7 +63,12 @@ export class BoxDataComponent implements OnInit {
 				}
 			}
 			if (!found) {
-				users.push({ ...f.value });
+				users.push({
+					...f.value,
+					positionLeft: +this.box.positionLeft,
+					positionTop: +this.box.positionTop
+				});
+				this.userServ.changeUserPonToShow(f.value.pon);
 			}
 			// if (!usersPons.includes(ponNumber)) {
 			// 	let userData = { ...f.value };
@@ -71,6 +76,7 @@ export class BoxDataComponent implements OnInit {
 			this.boxServ.edit(this.box.id, { users: users });
 			this.userServ.changeUsers(users);
 			// }
+			f.reset();
 		}
 	}
 

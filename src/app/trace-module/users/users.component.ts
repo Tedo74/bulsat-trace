@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { UserModel } from './user-model';
 import { Subscription } from 'rxjs';
 import { UserDataService } from '../user-data.service';
@@ -13,12 +13,15 @@ import { BoxModel } from '../box-model';
 })
 export class UsersComponent implements OnInit {
 	users: UserModel[];
+	// user: UserModel;
 	box: BoxModel;
-	userSubscription: Subscription;
+	usersSubscription: Subscription;
 	boxChangedSubs: Subscription;
 	showEdit = false;
 	openedPonForEdit: string;
 	currentIndex = -1;
+	showPositionTools = false;
+	stepToMoveUser = 20;
 
 	constructor(
 		private userServ: UserDataService,
@@ -29,7 +32,7 @@ export class UsersComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.users = this.userServ.users;
-		this.userSubscription = this.userServ.usersChanged.subscribe((users) => {
+		this.usersSubscription = this.userServ.usersChanged.subscribe((users) => {
 			this.users = users;
 		});
 
@@ -40,8 +43,9 @@ export class UsersComponent implements OnInit {
 	}
 
 	ngOnDestroy() {
-		this.userSubscription.unsubscribe();
+		this.usersSubscription.unsubscribe();
 		this.boxChangedSubs.unsubscribe();
+		this.userServ.changeUserPonToShow(undefined);
 	}
 
 	close() {
@@ -51,26 +55,25 @@ export class UsersComponent implements OnInit {
 
 	exit() {
 		this.router.navigate([ '../' ], { relativeTo: this.route });
+		this.userServ.changeUserPonToShow(undefined);
 	}
 
-	showOnMap() {}
+	showOnMap(ponNumber: string) {
+		this.userServ.changeUserPonToShow(ponNumber);
+	}
 
 	editUser(user: UserModel, index: number) {
 		this.openedPonForEdit = user.pon;
 		this.currentIndex = index;
 		this.showEdit = true;
-		// this.box.users[index]['pon'] = user.pon;
-		// this.box.users[index]['name'] = user.name;
-		// this.box.users[index]['address'] = user.address;
-		// }
-		// console.log(this.box.users);
-		// this.boxServ.edit(this.box.id, { users: this.box.users });
 	}
+
 	editUserSave(user: UserModel, index: number) {
 		if (user.pon) {
 			this.box.users[index]['pon'] = user.pon;
 			this.box.users[index]['name'] = user.name;
-			this.box.users[index]['address'] = user.pon;
+			this.box.users[index]['address'] = user.address;
+			this.box.users[index]['info'] = user.info;
 			this.openedPonForEdit = undefined;
 			this.showEdit = false;
 			this.currentIndex = -1;
@@ -89,5 +92,31 @@ export class UsersComponent implements OnInit {
 		this.openedPonForEdit = undefined;
 		this.showEdit = false;
 		this.currentIndex = -1;
+	}
+
+	moveLeft(user: UserModel) {
+		user.positionLeft = +user.positionLeft - this.stepToMoveUser;
+	}
+	moveRight(user: UserModel) {
+		user.positionLeft = +user.positionLeft + this.stepToMoveUser;
+	}
+	moveTop(user: UserModel) {
+		user.positionTop = +user.positionTop - this.stepToMoveUser;
+	}
+	moveBottom(user: UserModel) {
+		user.positionTop = +user.positionTop + this.stepToMoveUser;
+	}
+	stepDown() {
+		if (this.stepToMoveUser >= 2) {
+			this.stepToMoveUser--;
+		}
+	}
+	stepUp() {
+		if (this.stepToMoveUser <= 99) {
+			this.stepToMoveUser++;
+		}
+	}
+	saveUserLocation() {
+		this.boxServ.edit(this.box.id, { users: this.box.users });
 	}
 }

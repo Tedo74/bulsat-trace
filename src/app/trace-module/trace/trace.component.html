@@ -10,6 +10,13 @@
                 [style.left.px]="box.positionLeft" [style.top.px]="box.positionTop" (click)="getBox(box.id)">
             </app-box>
         </div>
+        <ng-container *ngIf="users.length>0">
+            <ng-container *ngFor="let user of users">
+                <div *ngIf="user.pon===userPonToShow" class="user-on-map" [style.left.px]="user.positionLeft"
+                    [style.top.px]="user.positionTop">
+                </div>
+            </ng-container>
+        </ng-container>
     </div>
     <!-- <app-box-edit *ngIf="box && boxEdit" (boxEditedEvent)="boxEdited($event)"></app-box-edit> -->
     <div>

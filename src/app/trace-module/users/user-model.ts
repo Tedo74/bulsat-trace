@@ -2,6 +2,7 @@ export interface UserModel {
 	pon: string;
 	name?: string;
 	address?: string;
-	locationLeft?: number;
-	locationTop?: number;
+	info?: string;
+	positionLeft?: number;
+	positionTop?: number;
 }

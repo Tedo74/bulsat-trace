@@ -72,3 +72,34 @@ div.input label,
 div.input input {
 	display: block;
 }
+
+/* position */
+.step {
+	display: flex;
+	justify-content: center;
+}
+.step-container p {
+	text-align: center;
+	padding: 0.5em;
+}
+
+.position-nav {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.left-right {
+	display: flex;
+	justify-content: center;
+}
+
+.save-location button {
+	background-color: burlywood;
+	color: rgb(26, 3, 3);
+	margin: 0.5em auto;
+}
+.save-location button:hover {
+	color: burlywood;
+	background-color: rgb(26, 3, 3);
+}

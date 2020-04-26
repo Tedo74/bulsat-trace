@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BoxServService } from '../box-serv.service';
 import { TraceModel } from '../trace-model';
+import { UserModel } from '../users/user-model';
+import { UserDataService } from '../user-data.service';
 
 @Component({
 	selector: 'app-trace',
@@ -26,13 +28,16 @@ export class TraceComponent implements OnInit, OnDestroy {
 	parentBoxId: string;
 	parentBox: BoxModel;
 	box: BoxModel;
-	// boxChanged: Subscription;
+	users: UserModel[];
+	userPonToShow: string;
+	userPonChanged: Subscription;
 	selectedBoxId: string;
 
 	constructor(
 		private traceServ: TracesServService,
 		private route: ActivatedRoute,
 		private boxServ: BoxServService,
+		private userServ: UserDataService,
 		private router: Router
 	) {}
 
@@ -52,14 +57,17 @@ export class TraceComponent implements OnInit, OnDestroy {
 			}
 		});
 
-		// this.boxChanged = this.boxServ.boxChanged.subscribe(b => {
-		// 	this.box = b;
-		// })
+		this.userPonChanged = this.userServ.userPonToShowChanged.subscribe(
+			(ponNumber) => {
+				this.userPonToShow = ponNumber;
+			}
+		);
 	}
 
 	ngOnDestroy() {
 		this.traceChanged.unsubscribe();
-		// this.boxChanged.unsubscribe();
+		this.userServ.changeUserPonToShow(undefined);
+		this.userPonChanged.unsubscribe();
 		// this.idChanged.unsubscribe();
 		this.traceInfoSubs.unsubscribe();
 	}
@@ -96,6 +104,8 @@ export class TraceComponent implements OnInit, OnDestroy {
 		this.selectedBoxId = id;
 		this.box = this.findBox(id);
 		this.boxServ.setBox(this.box);
+		this.users = this.box.users;
+		this.userServ.changeUsers(this.users);
 		if (this.box.parentBox) {
 			this.parentBox = this.findBox(this.box.parentBox);
 			this.boxServ.setParentBox(this.parentBox);

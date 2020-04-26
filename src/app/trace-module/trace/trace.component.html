@@ -15,6 +15,11 @@
                 <div *ngIf="user.pon===userPonToShow" class="user-on-map" [style.left.px]="user.positionLeft"
                     [style.top.px]="user.positionTop">
                 </div>
+                <div *ngIf="user.pon===userPonToShow" class="user-info-map" [style.left.px]="user.positionLeft+5"
+                    [style.top.px]="user.positionTop+5">
+                    <p *ngIf="user.name">{{user.name}}</p>
+                    <p *ngIf="user.address">{{user.address}}</p>
+                </div>
             </ng-container>
         </ng-container>
     </div>

@@ -1,6 +1,6 @@
 .position-nav-wrapper {
 	width: 400px;
-	background-color: #9f857f;
+	background-color: #1a0303;
 	text-align: center;
 	padding: 1em;
 }
@@ -42,7 +42,7 @@
 .step-container p {
 	font-weight: 800;
 	text-align: center;
-	color: #1a0303;
+	color: burlywood;
 	font-size: 1.3em;
 }
 .step button {
@@ -56,12 +56,12 @@
 h4,
 h5,
 h6 {
-	color: #1a0303;
+	color: burlywood;
 	margin: 0.5em;
 	text-align: center;
 }
 .form-wrapper {
-	background-color: darksalmon;
+	background-color: burlywood;
 	padding: 0.5em;
 	display: flex;
 	flex-direction: column;
@@ -93,7 +93,7 @@ p {
 	margin-left: 0.2em;
 }
 
-.users {
+/* .users {
 	background-color: #9f857f;
 	padding: 1em;
 }
@@ -102,7 +102,7 @@ p {
 }
 .users ol li {
 	padding: 0.2em 0.3em;
-}
+} */
 
 .show-users {
 	margin: 0 auto;

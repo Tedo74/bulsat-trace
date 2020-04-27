@@ -2,16 +2,21 @@
     <ul *ngIf="users">
         <li *ngFor="let user of users; let i=index;" (mouseover)="showOnMap(user.pon)">
             <div class="user-pon">
+                <a #show (click)="showMore(user.pon, $event.target)" class="show-more-info">{{showMoreInfo}}</a>
                 <span>пон:</span> <span class="data">
                     <a [href]="'https://lookup.bulsat.com/c/onu.pl?onu='+user.pon" target="_blank">{{user.pon}}</a>
                 </span>
             </div>
-            <p>Име: {{user?.name}}</p>
-            <p>Адрес: {{user?.address}}</p>
-            <p>Доп. инфо: {{user?.info}}</p>
-            <div class="user-info-btn">
-                <button (click)="showOnMap(user.pon)">show on map</button>
-                <button (click)="editUser(user, i)">edit</button>
+            <div class="more-info">
+                <ng-container *ngIf="moreInfo && openedPonForEdit===user.pon">
+                    <p>Име: {{user?.name}}</p>
+                    <p>Адрес: {{user?.address}}</p>
+                    <p>Доп. инфо: {{user?.info}}</p>
+                    <div class="user-info-btn">
+                        <button (click)="showOnMap(user.pon)">show on map</button>
+                        <button (click)="editUser(user, i)">edit</button>
+                    </div>
+                </ng-container>
             </div>
             <!-- <div class="edit-user"> -->
             <div class="delete-edit-user" *ngIf="showEdit && user.pon === openedPonForEdit && i===currentIndex">

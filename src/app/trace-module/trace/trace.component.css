@@ -29,7 +29,7 @@
 h5 {
 	color: white;
 	text-align: center;
-	background-color: #9f857f;
+	background-color: #1a0303;
 	font-size: 1em;
 	padding: 0.2em;
 }
@@ -96,13 +96,13 @@ h5 {
 	color: wheat;
 }
 .box-details {
-	background-color: #9f857f;
+	background-color: #1a0303;
 	padding: 1em;
 	margin-bottom: 1em;
 	border: 2px solid #1a0303;
 	max-width: 400px;
 	border-radius: 0.3em;
-	color: black;
+	color: burlywood;
 }
 
 .next-boxes {

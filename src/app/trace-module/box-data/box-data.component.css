@@ -3,8 +3,9 @@
 	flex-direction: column;
 }
 .box-data p {
-	color: rgb(26, 3, 3);
+	color: white;
 	font-size: 1.1em;
+	margin-bottom: 0.5em;
 }
 
 .data {
@@ -12,7 +13,8 @@
 }
 .box-data-heading {
 	text-align: center;
-	background-color: #a52a2a;
+	background-color: burlywood;
+	color: rgb(26, 3, 3);
 	padding: 0.2em;
 	font-size: 1.1em;
 }
@@ -20,7 +22,7 @@
 .box-nav {
 	display: flex;
 	flex-direction: column;
-	background-color: #a52a2a;
+	background-color: burlywood;
 	padding: 1em;
 	align-items: center;
 	margin-bottom: 0.5em;
@@ -37,9 +39,9 @@
 }
 
 .add-user {
+	color: rgb(26, 3, 3);
 	display: flex;
 	flex-direction: column;
-	/* justify-content: flex-start; */
 	align-items: flex-start;
 }
 .add-user-button {

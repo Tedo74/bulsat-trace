@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 0.8em;
-	background-color: #9f857f;
+	background-color: #1a0303;
 	align-items: center;
 	border: 2px solid rgb(26, 3, 3);
 	border-radius: 0.2em;
@@ -23,7 +23,7 @@
 }
 
 li:nth-of-type(odd) {
-	background-color: #a52a2a;
+	background-color: #b08854;
 }
 
 li:nth-of-type(even) {
@@ -102,4 +102,13 @@ div.input input {
 .save-location button:hover {
 	color: burlywood;
 	background-color: rgb(26, 3, 3);
+}
+
+.show-more-info {
+	background-color: #1a0303;
+	text-align: center;
+	color: white;
+	font-weight: 800;
+	padding: 0.2em 0.3em;
+	margin-right: 0.4em;
 }

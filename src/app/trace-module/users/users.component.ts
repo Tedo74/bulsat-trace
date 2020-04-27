@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { UserModel } from './user-model';
 import { Subscription } from 'rxjs';
 import { UserDataService } from '../user-data.service';
@@ -13,7 +13,7 @@ import { BoxModel } from '../box-model';
 })
 export class UsersComponent implements OnInit {
 	users: UserModel[];
-	// user: UserModel;
+	@ViewChildren('show') show: QueryList<ElementRef>;
 	box: BoxModel;
 	usersSubscription: Subscription;
 	boxChangedSubs: Subscription;
@@ -22,6 +22,8 @@ export class UsersComponent implements OnInit {
 	currentIndex = -1;
 	showPositionTools = false;
 	stepToMoveUser = 20;
+	moreInfo = false;
+	showMoreInfo = 'подробно';
 
 	constructor(
 		private userServ: UserDataService,
@@ -118,5 +120,27 @@ export class UsersComponent implements OnInit {
 	}
 	saveUserLocation() {
 		this.boxServ.edit(this.box.id, { users: this.box.users });
+	}
+
+	showMore(ponNumber: string, el: HTMLElement) {
+		if (!this.moreInfo && el.textContent === 'подробно') {
+			el.textContent = 'затвори';
+			this.moreInfo = true;
+			this.openedPonForEdit = ponNumber;
+		} else if (el.textContent === 'затвори' && this.openedPonForEdit === ponNumber) {
+			el.textContent = 'подробно';
+			this.moreInfo = false;
+			this.openedPonForEdit = undefined;
+		} else if (
+			this.moreInfo &&
+			el.textContent === 'подробно' &&
+			this.openedPonForEdit !== ponNumber
+		) {
+			this.show.toArray().forEach((element) => {
+				element.nativeElement.textContent = 'подробно';
+			});
+			this.openedPonForEdit = ponNumber;
+			el.textContent = 'затвори';
+		}
 	}
 }

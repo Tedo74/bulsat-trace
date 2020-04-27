@@ -1,8 +1,8 @@
 .form-wrapper {
 	margin: 1.5em auto;
-	background-color: rgb(165, 42, 42);
+	background-color: #1a0303;
 	max-width: 22em;
-	padding: 1em;
+	padding: 0.5em;
 	border-radius: 0.5em;
 	font-size: 1.2em;
 	border: 2px solid black;
@@ -11,7 +11,7 @@
 .form-auth {
 	border: 2px solid #1a0303;
 	padding: 0.8em;
-	background-color: #9f857f;
+	background-color: burlywood;
 	/* #9f857f; */
 	border-radius: inherit;
 }
@@ -28,7 +28,7 @@
 	border-radius: 0.2em;
 }
 .form-auth label {
-	color: white;
+	color: #1a0303;
 	font-size: 1.2em;
 }
 
@@ -38,12 +38,12 @@
 	border: none;
 	background-color: #1a0303;
 	color: white;
-	padding: 0.5em 1em;
+	/* padding: 0.3em 0.5em; */
 	font-size: inherit;
 	border: 2px solid white;
-	border-radius: inherit;
+	border-radius: 0.3em;
 	cursor: pointer;
-	font-weight: 700;
+	font-weight: 800;
 	/* -webkit-transition-duration: 0.3s; */
 	/* Safari */
 	/* transition-duration: 0.3s; */

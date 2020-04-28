@@ -9,7 +9,7 @@ import { BoxModel } from '../box-model';
 @Component({
 	selector: 'app-users',
 	templateUrl: './users.component.html',
-	styleUrls: [ './users.component.css' ]
+	styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
 	users: UserModel[];
@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
 		private boxServ: BoxServService,
 		private router: Router,
 		private route: ActivatedRoute
-	) {}
+	) { }
 
 	ngOnInit(): void {
 		this.users = this.userServ.users;
@@ -53,10 +53,11 @@ export class UsersComponent implements OnInit {
 	close() {
 		this.showEdit = false;
 		this.openedPonForEdit = undefined;
+		this.closeAll();
 	}
 
 	exit() {
-		this.router.navigate([ '../' ], { relativeTo: this.route });
+		this.router.navigate(['../'], { relativeTo: this.route });
 		this.userServ.changeUserPonToShow(undefined);
 	}
 
@@ -79,6 +80,7 @@ export class UsersComponent implements OnInit {
 			this.openedPonForEdit = undefined;
 			this.showEdit = false;
 			this.currentIndex = -1;
+			this.closeAll();
 		}
 		// console.log(this.box.users);
 		this.boxServ.edit(this.box.id, { users: this.box.users });
@@ -92,6 +94,7 @@ export class UsersComponent implements OnInit {
 		this.boxServ.setBox(this.box);
 		this.boxServ.edit(this.box.id, { users: filteredUsers });
 		this.openedPonForEdit = undefined;
+		this.closeAll();
 		this.showEdit = false;
 		this.currentIndex = -1;
 	}
@@ -136,11 +139,14 @@ export class UsersComponent implements OnInit {
 			el.textContent === 'подробно' &&
 			this.openedPonForEdit !== ponNumber
 		) {
-			this.show.toArray().forEach((element) => {
-				element.nativeElement.textContent = 'подробно';
-			});
+			this.closeAll();
 			this.openedPonForEdit = ponNumber;
 			el.textContent = 'затвори';
 		}
+	}
+	closeAll() {
+		this.show.toArray().forEach((element) => {
+			element.nativeElement.textContent = 'подробно';
+		});
 	}
 }

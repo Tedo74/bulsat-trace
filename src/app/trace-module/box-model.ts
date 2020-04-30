@@ -4,7 +4,7 @@ export interface BoxModel {
 	id?: string;
 	name: string;
 	freeFibers: number;
-	// number: number;
+	addInfo?: string;
 	splitter: number;
 	// userDetails: { pon: string; name: string };
 	users: { pon: string; name?: string; address?: string }[];

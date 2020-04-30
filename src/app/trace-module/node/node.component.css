@@ -36,3 +36,9 @@ h4 {
 	align-items: center;
 	padding: 0 1em 1em;
 }
+
+.node-box {
+	min-width: 20em;
+	background-color: burlywood;
+	border: 2px solid #1a0303;
+}

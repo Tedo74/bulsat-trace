@@ -32,6 +32,13 @@
                 <p><input type="number" [(ngModel)]="box.freeFibers" name="freeFibers" id="free-fibers"></p>
             </div>
             <div>
+                <p> <label for="add-info">допълнителна информация</label></p>
+                <p>
+                    <textarea [(ngModel)]="box.addInfo" name="addInfo" id="add-info" spellcheck="false">
+                    </textarea>
+                </p>
+            </div>
+            <div>
                 <p> <label for="splitter">сплитер</label></p>
                 <p><input type="number" [(ngModel)]="box.splitter" name="splitter" id="splitter"></p>
             </div>

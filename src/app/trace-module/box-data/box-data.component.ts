@@ -1,12 +1,4 @@
-import {
-	Component,
-	OnInit,
-	Input,
-	Output,
-	EventEmitter,
-	ViewChild,
-	ElementRef
-} from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { BoxModel } from '../box-model';
 import { BoxServService } from '../box-serv.service';
 import { NgForm } from '@angular/forms';
@@ -21,7 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class BoxDataComponent implements OnInit {
 	@Input() box: BoxModel;
-	// @ViewChild('pon') pon: ElementRef;
+	@ViewChild('addUser') addUser: ElementRef;
+	showUserAdd = false;
 	constructor(
 		private boxServ: BoxServService,
 		private userServ: UserDataService,
@@ -88,5 +81,18 @@ export class BoxDataComponent implements OnInit {
 		this.userServ.users = users;
 		this.userServ.changeUsers(users);
 		this.router.navigate([ './users' ], { relativeTo: this.route });
+	}
+
+	showAddUser() {
+		if (
+			!this.showUserAdd &&
+			this.addUser.nativeElement.textContent === 'Добави абонат'
+		) {
+			this.showUserAdd = true;
+			this.addUser.nativeElement.textContent = 'затвори';
+		} else {
+			this.showUserAdd = false;
+			this.addUser.nativeElement.textContent = 'Добави абонат';
+		}
 	}
 }

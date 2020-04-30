@@ -92,7 +92,8 @@ button:hover {
 	border-radius: 0.2em;
 }
 
-input {
+input,
+textarea {
 	border-style: none;
 	border-radius: 0.2em;
 	border-radius: 0.2em;
